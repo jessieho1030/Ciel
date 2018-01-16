@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="app.comps456f.Tutorial"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="100"
+    android:orientation="vertical"
+    android:id="@+id/tut_linearLayout"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    >
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="30"
+        android:clickable="true"
+
+        android:id="@+id/chapter1Clicked"
+        >
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Chapter 1: Aggregate"
+            android:textSize="37dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/chapter1_title"></TextView>
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Aggregate functions of SQL"
+            android:textSize="24dp"
+            android:layout_below="@+id/chapter1_title"></TextView>
+    </RelativeLayout>
+    <View android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"></View>
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="30"
+        android:clickable="true"
+
+        android:id="@+id/chapter2Clicked">
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Chapter 2: Join"
+            android:textSize="38dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/chapter2_title"></TextView>
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Join functions of SQL"
+            android:textSize="24dp"
+            android:layout_below="@+id/chapter2_title"></TextView>
+    </RelativeLayout>
+    <View android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"></View>
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="30"
+        android:clickable="true"
+
+        android:id="@+id/chapter3Clicked">
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Chapter 3: Sub-Query"
+            android:textSize="38dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/chapter3_title"></TextView>
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Sub-Queries of SQL"
+            android:textSize="24dp"
+            android:layout_below="@+id/chapter3_title"></TextView>
+    </RelativeLayout>
+</LinearLayout>
+</RelativeLayout>

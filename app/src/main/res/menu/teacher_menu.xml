@@ -2,28 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item
-        android:id="@+id/nav_tutor"
-        android:title="Tutorials"
-        android:icon="@drawable/ic_open_book"
-        />
 
     <item
-        android:id="@+id/nav_quiz"
-        android:title="Quizzes"
-        android:icon="@drawable/ic_test"
-        />
-
-    <item
-        android:id="@+id/nav_result"
+        android:id="@+id/tech_result"
         android:title="View Results"
         android:icon="@drawable/ic_evaluation"
         />
-
     <item
-        android:id="@+id/nav_discuss"
+        android:id="@+id/tech_discuss"
         android:title="Discussion"
-        
         />
 
     <item

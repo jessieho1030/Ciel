@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:whatever="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +16,7 @@
 
 
         <com.andreabaccega.widget.FormEditText
-            android:id="@+id/username_ET"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view2"
@@ -47,7 +48,7 @@
 
 
         <com.andreabaccega.widget.FormEditText
-            android:id="@+id/password_ET"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view2"
@@ -65,4 +66,23 @@
             whatever:testErrorString="Invalid Password"
             whatever:testType="regexp" />
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+    <com.dd.processbutton.iml.ActionProcessButton
+        android:id="@+id/btnLogin"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textColor="#ffffff"
+        android:textSize="13sp"
+        custom:pb_colorComplete="#644099"
+        android:layout_marginTop="20dp"
+        custom:pb_colorError="@color/red_error"
+        custom:pb_colorNormal="#EBE8E8"
+        custom:pb_colorPressed="#EBE8E8"
+        custom:pb_colorProgress="#EBE8E8"
+        custom:pb_textComplete="Success"
+        custom:pb_textError="Error"
+        custom:pb_textProgress="Loading"
+        android:layout_below="@+id/view2"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>
