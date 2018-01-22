@@ -1,12 +1,107 @@
 <resources>
     <string name="app_name">Ciel</string>
+    <!--Drawer srting-->
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="chapter1_title">SQL Aggregate</string>
-    <string name="chapter1_content"></string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--Tutorial contents-->
+    <!--Chapter 1-->
+    <string name="chapter1_title">SQL Join \n</string>
+    <string name="chapter1_content1">To mix up the rows from two or more tables with JOIN clause, set the connection by the related column between them.
+            \n\nDifferent Types of JOINs:\n
+            Inner Join\n
+            \u00A0\u00A0 ● (INNER) JOIN\n
+            Outer Join\n
+            \u00A0\u00A0 ● LEFT (OUTER) JOIN\n
+            \u00A0\u00A0 ● RIGHT (OUTER) JOIN\n
+            \u00A0\u00A0 ● FULL (OUTER) JOIN\n
+    </string>
+    <string name="chapter1_content2">SELECT column_name(s)
+        \nFROM table1
+        \nINNER JOIN table2 ON
+        \ntable1.column_name = table2.column_name;
+        \n\nE.g. Select all columns (except salary) from tables Department and Employee by using INNER JOIN.</string>
+
+    <string name="chapter1_content3">SELECT column_name(s)
+        \nFROM table1
+        \nLEFT JOIN table2 ON
+        \ntable1.column_name = table2.column_name;
+        \n\nE.g. Select all columns (except salary) from the table Employee by LEFT JOIN the table Department.
+    </string>
+    <string name="chapter1_content4">SELECT column_name(s)
+        \nFROM table1
+        \nRIGHT JOIN table2 ON table1.column_name = table2.column_name;
+        \n\nE.g. Select all columns (except salary) from the table Department by RIGHT JOIN the table Employee.
+    </string>
+    <string name="chapter1_content5">SELECT column_name(s)
+        \nFROM table1
+        \nFULL OUTER JOIN table2 ON table1.column_name = table2.column_name;
+        \n\nE.g. Select all columns from both Department table and Employee table by FULL OUTER JOIN.
+    </string>
+
+    <!--Chapter 2-->
+    <string name="chapter2_title">SQL Aggregate\n</string>
+    <string name="chapter2_content1">Aggregate function
+        \n\u00A0  1. COUNT
+        \n\u00A0  2. AVG
+        \n\u00A0  3. SUM
+        \n\u00A0 4. MIN
+        \n\u00A0  5. MAX
+        \n\nSQL Structure:
+        \nSELECT Aggregate \nFunction(column_name)
+        \nFROM table_name
+        \nWHERE condition;
+        \n\n1. The COUNT() function returns the number of rows that matches a specified criteria.
+        \nE.g. Count the total number of the employee of Department ID=10.
+    </string>
+    <string name="chapter2_content2">\n\n2. The AVG() function returns the average value of a numeric column.
+        \nE.g. Calculate the average salary of the employee of Department ID=10.
+    </string>
+    <string name="chapter2_content3">\n\n3. The SUM() function returns the total sum of a numeric column.
+        \nE.g. Calculate the sum of the salary of all the employee of Department ID=10.
+    </string>
+    <string name="chapter2_content4">\n\n4. The MIN() function returns the smallest value of the selected column.
+        \nE.g. Find the minimum salary of the employee of Department ID=10.
+    </string>
+    <string name="chapter2_content5">\n\n5. The MAX() function returns the largest value of the selected column.
+        \nE.g. Find the maximum salary of the employee of Department ID=10.
+    </string>
+    <string name="chapter2_content6">\n\u00A0\*\u00A0There is the correct order of SQL statment:\nSELECT column_name(s)
+        \nFROM table_name
+        \nWHERE condition
+        \nGROUP BY column_name(s)
+        \nHAVING condition
+        \nORDER BY column_name(s);
+</string>
+    <!--Chapter 3-->
+    <string name="chapter3_title">SQL Subquery\n</string>
+    <string name="chapter3_content1">A subselect can be used in WHERE and HAVING clauses of an outer SELECT, INSERT, UPDATE, and DELETE.
+        \n\u00A0 - The subquery or nested query (inner query) executes once before the main query.
+        \n\u00A0 - The result of the subquery is used by the main query (outer query).
+    </string>
+    <string name="chapter3_content2">\n\nTips for using subqueries:
+        \n\u00A0●	Enclose subqueries with brackets
+        \n\u00A0●	Place subqueries on the right side of the comparison condition
+        \n\u00A0●	The ORDER BY clause in the subquery is not required only if you are accomplishing  top-n analysis
+        \n\u00A0●	Use single-row operators with single-row subqueries and use multiple-row operators with multiple-row subqueries
+    </string>
+    <string name="chapter3_content3">\n\nFor single-row subqueries
+        \n\u00A0➢	return single row
+        \n\u00A0➢	use single-row comparison operator
+        \n\nTable of different operators:
+    </string>
+    <string name="chapter3_content4">For multiple-row subqueries
+        \n\u00A0➢	return more than one row
+        \n\u00A0➢	use multiple-row comparison operator
+        \n\nTable of different operators:
+    </string>
+    <string name="chapter3_content5">Top-N queries use for return the n largest or smallest values of a column.
+        \nE.g. What are the top ten products? or What are the worst ten products? \n\u00A0\*\u00A0The returned values sets are based on Top-N queries.
+        \n\ni.e. Select the first 10 results from table1
+        \nSELECT *
+        \nFROM table1
+        \nLIMIT 0, 10
+</string>
 
 </resources>

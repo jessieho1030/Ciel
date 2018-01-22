@@ -25,13 +25,13 @@
         >
         <TextView android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="Chapter 1: Aggregate"
+            android:text="Chapter 1: Join"
             android:textSize="37dp"
             android:layout_centerVertical="true"
             android:id="@+id/chapter1_title"></TextView>
         <TextView android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="Aggregate functions of SQL"
+            android:text="Join functions of SQL"
             android:textSize="24dp"
             android:layout_below="@+id/chapter1_title"></TextView>
     </RelativeLayout>
@@ -47,13 +47,13 @@
         android:id="@+id/chapter2Clicked">
         <TextView android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="Chapter 2: Join"
+            android:text="Chapter 2: Aggregate"
             android:textSize="38dp"
             android:layout_centerVertical="true"
             android:id="@+id/chapter2_title"></TextView>
         <TextView android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="Join functions of SQL"
+            android:text="Aggregate functions of SQL"
             android:textSize="24dp"
             android:layout_below="@+id/chapter2_title"></TextView>
     </RelativeLayout>

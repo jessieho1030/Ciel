@@ -13,4 +13,5 @@ public class Chapter1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chapter1);
     }
+
 }
