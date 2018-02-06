@@ -93,7 +93,7 @@ public class MainPage extends AppCompatActivity {
                 fClass = Discuss.class;
                 break;
             case R.id.nav_logout:
-                fClass = LoginPage.class;
+                fClass = Logout.class;
                 break;
             case R.id.tech_result:
                 fClass = TeacherResult.class;

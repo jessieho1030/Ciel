@@ -22,7 +22,8 @@
         <activity android:name=".Chapter1" />
         <activity android:name=".Chapter2" />
         <activity android:name=".Chapter3" />
-
+        <activity android:name=".RegisterPage" />
+        <activity android:name=".LoginPage" />
     </application>
 
 </manifest>
