@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Ciel.iml" filepath="$PROJECT_DIR$/Ciel.iml" />
+      <module fileurl="file://C:\Users\chung\AndroidStudioProjects\Ciel\Ciel.iml" filepath="C:\Users\chung\AndroidStudioProjects\Ciel\Ciel.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\chung\AndroidStudioProjects\Ciel\app\app.iml" filepath="C:\Users\chung\AndroidStudioProjects\Ciel\app\app.iml" />
     </modules>
   </component>
 </project>
