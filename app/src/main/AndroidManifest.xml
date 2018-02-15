@@ -24,6 +24,8 @@
         <activity android:name=".Chapter3" />
         <activity android:name=".RegisterPage" />
         <activity android:name=".LoginPage" />
+        <activity android:name=".QuizPage" />
+        <activity android:name=".teacher_cardview" />
     </application>
 
 </manifest>

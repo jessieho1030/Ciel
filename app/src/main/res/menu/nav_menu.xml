@@ -25,6 +25,11 @@
         android:title="Discussion"
         android:icon="@drawable/ic_discussion"
         />
+    <item
+        android:id="@+id/tech_result"
+        android:title="View Results (Teacher)"
+        android:icon="@drawable/ic_evaluation"
+        />
 
     <item
         android:id="@+id/nav_logout"
