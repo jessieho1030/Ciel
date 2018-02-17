@@ -30,12 +30,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp">
             <ImageView
-                android:id="@+id/user_img"
+                android:id="@+id/email_img"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/users"
+                android:src="@drawable/opened_email_envelope"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true" />
 
@@ -44,22 +44,21 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
-                android:layout_toRightOf="@+id/user_img">
+                android:layout_toRightOf="@+id/email_img">
 
                 <com.andreabaccega.widget.FormEditText
-                    android:id="@+id/usernameText"
+                    android:id="@+id/emailText"
                     android:layout_width="match_parent"
-                    android:maxLength="20"
+                    android:maxLength="30"
                     android:layout_height="match_parent"
                     android:ems="10"
-                    android:hint="Username"
+                    android:hint="Email"
                     android:imeOptions="actionGo"
                     android:inputType="text"
                     android:singleLine="true"
                     android:textSize="15dp"
-                    whatever:customRegexp="[a-zA-Z0-9]{8,}"
-                    whatever:emptyErrorString="Username must not empty"
-                    whatever:testErrorString="Invalid username"
+                    whatever:customRegexp="[a-zA-Z0-9]{10,}"
+                    whatever:emptyErrorString="Email must not empty"
                     whatever:testType="regexp" />
             </com.wrapp.floatlabelededittext.FloatLabeledEditText>
         </RelativeLayout>
@@ -136,44 +135,7 @@
                     whatever:testType="regexp" />
             </com.wrapp.floatlabelededittext.FloatLabeledEditText>
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
-            <ImageView
-                android:id="@+id/type_img"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/type"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"/>
 
-            <com.wrapp.floatlabelededittext.FloatLabeledEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLength="10"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="20dp"
-                android:layout_toRightOf="@+id/type_img">
-                <com.andreabaccega.widget.FormEditText
-                    android:id="@+id/typeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:ems="10"
-                    android:maxLength="20"
-                    android:hint="User Type"
-                    android:imeOptions="actionGo"
-                    android:inputType="textPassword"
-                    android:singleLine="true"
-                    android:textSize="15dp"
-                    whatever:customRegexp="^([Teacher]|[Student])"
-                    whatever:emptyErrorString="User Type must not empty"
-                    whatever:testErrorString="Invalid User Type"
-                    whatever:testType="regexp" />
-            </com.wrapp.floatlabelededittext.FloatLabeledEditText>
-        </RelativeLayout>
         <com.dd.processbutton.iml.ActionProcessButton
             android:id="@+id/btnSubmit"
             android:layout_width="340dp"

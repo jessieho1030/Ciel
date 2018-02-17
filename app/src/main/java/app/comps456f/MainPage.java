@@ -12,21 +12,39 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainPage extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private String job_title;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // set main page layout
         init();
     }
 
     public void init(){
+        firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser() ==null){
+            finish();
+            startActivity(new Intent(getApplicationContext(),LoginPage.class));
+        }
+        if(firebaseAuth.getCurrentUser()!=null){
+           // finish();
+            //startActivity(new Intent(getApplicationContext(),MainPage.class));
+            FirebaseUser user =firebaseAuth.getCurrentUser();
+            Toast.makeText(MainPage.this,"Welcome "+user.getEmail(),Toast.LENGTH_SHORT).show();
+        }
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close) {
 

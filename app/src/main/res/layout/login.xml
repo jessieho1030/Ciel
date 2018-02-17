@@ -17,22 +17,22 @@
 
 
         <com.andreabaccega.widget.FormEditText
-            android:id="@+id/username"
+            android:id="@+id/useremail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view2"
             android:layout_centerHorizontal="true"
             android:ems="10"
-            android:hint="Username"
+            android:hint="Email"
             android:imeOptions="actionGo"
             android:inputType="text"
             android:singleLine="true"
-            android:textColor="#ffffff"
+            android:textColor="#A8A8A8"
             android:textColorHint="#A8A8A8"
             android:textSize="15dp"
             whatever:customRegexp="[a-zA-Z0-9]{1,}"
-            whatever:emptyErrorString="Username must not empty"
-            whatever:testErrorString="Invalid Username"
+            whatever:emptyErrorString="Email must not empty"
+            whatever:testErrorString="Invalid Email"
             whatever:testType="regexp" />
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
@@ -59,7 +59,7 @@
             android:imeOptions="actionGo"
             android:inputType="textPassword"
             android:singleLine="true"
-            android:textColor="#ffffff"
+            android:textColor="#A8A8A8"
             android:textColorHint="#A8A8A8"
             android:textSize="15dp"
             whatever:customRegexp="[a-zA-Z0-9]{1,}"
