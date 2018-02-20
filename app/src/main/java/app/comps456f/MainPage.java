@@ -53,18 +53,19 @@ public class MainPage extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         NavigationView nvDrawer = (NavigationView)findViewById(R.id.nav_view);
-       // NavigationView nvDrawer2 = (NavigationView)findViewById(R.id.tech_view);
-        setDrawerContent(nvDrawer);
+        NavigationView nvDrawer2 = (NavigationView)findViewById(R.id.tech_view);
+
        // if(job_title=="Student"){
 
-         /*   nvDrawer.setVisibility(View.VISIBLE);
-            nvDrawer2.setVisibility(View.GONE);
-        }
-        else if(job_title=="Teacher"){
-            setDrawerContent(nvDrawer2);
-            nvDrawer2.setVisibility(View.VISIBLE);
-            nvDrawer.setVisibility(View.GONE);
-        }*/
+         //  nvDrawer.setVisibility(View.VISIBLE);
+          //  nvDrawer2.setVisibility(View.GONE);
+        //}
+        //else if(job_title=="Teacher"){
+            setDrawerContent(nvDrawer);
+           setDrawerContent(nvDrawer2);
+           // nvDrawer2.setVisibility(View.VISIBLE);
+            //nvDrawer.setVisibility(View.GONE);
+        //}
     }
 
 

@@ -30,6 +30,43 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp">
             <ImageView
+                android:id="@+id/name_img"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/users"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true" />
+
+            <com.wrapp.floatlabelededittext.FloatLabeledEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/name_img">
+
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/nameText"
+                    android:layout_width="match_parent"
+                    android:maxLength="30"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:hint="Name"
+                    android:imeOptions="actionGo"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textSize="15dp"
+                    whatever:customRegexp="[a-zA-Z0-9]{10,}"
+                    whatever:emptyErrorString="Name must not empty"
+                    whatever:testType="regexp" />
+            </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <ImageView
                 android:id="@+id/email_img"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

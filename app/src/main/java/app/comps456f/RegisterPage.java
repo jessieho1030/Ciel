@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Transaction;
 
 /**
@@ -25,11 +26,14 @@ import com.google.firebase.database.Transaction;
  */
 
 public class RegisterPage extends AppCompatActivity implements View.OnClickListener{
-    private FormEditText emailText, passwordText, repasswordText;
+    private FormEditText emailText, passwordText, repasswordText, nameText;
     private ActionProcessButton btnSubmit;
     private FirebaseAuth firebaseAuth;
     private MyProgressDialog progressDialog;
     private Handler handler;
+    private DatabaseReference databaseReference;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class RegisterPage extends AppCompatActivity implements View.OnClickListe
         emailText = (FormEditText)findViewById(R.id.emailText);
         passwordText = (FormEditText)findViewById(R.id.passwordText);
         repasswordText = (FormEditText)findViewById(R.id.repasswordText);
+        nameText = (FormEditText)findViewById(R.id.nameText);
         btnSubmit.setOnClickListener(this);
     }
 
