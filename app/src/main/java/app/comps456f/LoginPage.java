@@ -45,19 +45,19 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         progressDialog = new MyProgressDialog(this,"Logining...","Please wait few seconds");
         useremail = (FormEditText)findViewById(R.id.useremail);
         userpassword = (FormEditText)findViewById(R.id.password);
-        btnRegister = (ActionProcessButton)findViewById(R.id.btnRegister);
+       // btnRegister = (ActionProcessButton)findViewById(R.id.btnRegister);
         btnLogin = (ActionProcessButton)findViewById(R.id.btnLogin);
-        btnRegister.setOnClickListener(this);
+//        btnRegister.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
                 Intent intent=new Intent();
-                if(view== view.findViewById(R.id.btnRegister)){
+               /* if(view== view.findViewById(R.id.btnRegister)){
                     intent.setClass(this,RegisterPage.class);
                     startActivity(intent);
-                }
+                }*/
                 if(view== view.findViewById(R.id.btnLogin)){
                     userLogin();
 

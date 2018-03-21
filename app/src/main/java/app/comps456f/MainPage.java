@@ -99,6 +99,10 @@ public class MainPage extends AppCompatActivity {
         Fragment mFragment = null;
         Class fClass;
         switch (item.getItemId()){
+            case R.id.nav_profile:
+                fClass = Profile.class;
+                break;
+
             case R.id.nav_tutor:
                 fClass = Tutorial.class;
                 break;

@@ -18,7 +18,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Transaction;
 
 /**
@@ -31,7 +33,7 @@ public class RegisterPage extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth firebaseAuth;
     private MyProgressDialog progressDialog;
     private Handler handler;
-    private DatabaseReference databaseReference;
+    private DatabaseReference myRef;
 
 
 
@@ -63,7 +65,8 @@ public class RegisterPage extends AppCompatActivity implements View.OnClickListe
 
 
     private void registerUser(){
-        String email = emailText.getText().toString();
+        final String email = emailText.getText().toString();
+        final String name = nameText.getText().toString();
         String password = passwordText.getText().toString();
         /*FormEditText[] allFields = {emailText,passwordText,repasswordText};
         boolean allValid = true;
@@ -72,12 +75,17 @@ public class RegisterPage extends AppCompatActivity implements View.OnClickListe
         for (FormEditText field : allFields) {
             allValid = field.testValidity() && allValid;
         }*/
+
         progressDialog.show();
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     progressDialog.dimiss();
                     if (task.isSuccessful()) {
+
+                        SaveUserInformation saveInfo = new SaveUserInformation(name,email);
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                        myRef.child(user.getUid()).setValue(saveInfo);
                         Toast.makeText(RegisterPage.this, "Register Successfully", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(RegisterPage.this, "Could not register...please try again", Toast.LENGTH_SHORT).show();
@@ -85,6 +93,10 @@ public class RegisterPage extends AppCompatActivity implements View.OnClickListe
                 }
 
         });
+
+    }
+
+    public void saveUserInformation(){
 
     }
 

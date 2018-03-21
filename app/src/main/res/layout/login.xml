@@ -86,7 +86,7 @@
         android:layout_below="@+id/view2"
         android:layout_gravity="center_horizontal" />
 
-    <com.dd.processbutton.iml.ActionProcessButton
+ <!--   <com.dd.processbutton.iml.ActionProcessButton
         android:id="@+id/btnRegister"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
@@ -104,6 +104,6 @@
         custom:pb_textComplete="Success"
         custom:pb_textError="Error"
         custom:pb_textProgress="Loading"
-        />
+        />-->
 
 </LinearLayout>
