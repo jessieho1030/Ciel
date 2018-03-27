@@ -14,6 +14,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#086A87"
         android:text="@string/chapter1_title"
         android:textSize="28dp"
         android:textStyle="bold" />
@@ -24,10 +25,7 @@
         android:text="@string/chapter1_content1"
         android:textSize="20dp"
         />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,12 +35,14 @@
         android:layout_height="wrap_content"
         android:src="@drawable/department"
         />
-
+    <View android:layout_height="4dp"
+        android:layout_width="match_parent"
+        android:background="@color/border"></View>
     <!--Inner Join-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="\n\n1.	(INNER) JOIN: Returns records that have matching values in both tables"
+        android:text="\n1.	(INNER) JOIN: Returns records that have matching values in both tables"
         android:textSize="20dp"/>
     <ImageView
         android:layout_width="wrap_content"
@@ -59,10 +59,12 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:src="@drawable/example1"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#0B2F3A"
         android:textStyle="italic"
         android:text="Result : "
         android:textSize="20dp"/>
@@ -70,12 +72,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/solution1"/>
-
+    <View android:layout_height="4dp"
+        android:layout_width="match_parent"
+        android:background="@color/border"></View>
     <!--Left Join-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="\n\n2.	LEFT (OUTER) JOIN: Return all records from the left table, and the matched records from the right table"
+        android:text="\n2.	LEFT (OUTER) JOIN: Return all records from the left table, and the matched records from the right table"
         android:textSize="20dp"/>
     <ImageView
         android:layout_width="match_parent"
@@ -94,6 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="italic"
+        android:textColor="#0B2F3A"
         android:text="Result : "
         android:textSize="20dp"/>
     <ImageView
@@ -105,13 +110,16 @@
         android:layout_height="wrap_content"
         android:textSize="15dp"
         android:textStyle="italic"
-        android:text="The LEFT JOIN will show all the record of the related table even the record has no linkage with another table, such as the last record shown above.\n\n"/>
+        android:text="The LEFT JOIN will show all the record of the related table even the record has no linkage with another table, such as the last record shown above."/>
 
+    <View android:layout_height="4dp"
+        android:layout_width="match_parent"
+        android:background="@color/border"></View>
         <!--Right Join-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="3.	RIGHT (OUTER) JOIN: Return all records from the right table, and the matched records from the left table"
+        android:text="\n3.	RIGHT (OUTER) JOIN: Return all records from the right table, and the matched records from the left table"
         android:textSize="20dp"/>
     <ImageView
         android:layout_width="match_parent"
@@ -130,6 +138,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="italic"
+        android:textColor="#0B2F3A"
         android:text="Result : "
         android:textSize="20dp"/>
     <ImageView
@@ -139,16 +148,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:textSize="17dp"
         android:textStyle="italic"
         android:text="The RIGHT JOIN will show all the record of the related table even the record has no linkage with another table, such as the last record shown above."
         />
-
+    <View android:layout_height="4dp"
+        android:layout_width="match_parent"
+        android:background="@color/border"></View>
     <!--Full Join-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="\n\n4.	FULL (OUTER) JOIN: Return all records when there is a match in either left or right table"
+        android:text="\n4.	FULL (OUTER) JOIN: Return all records when there is a match in either left or right table"
         android:textSize="20dp"/>
     <ImageView
         android:layout_width="match_parent"
@@ -167,6 +178,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="italic"
+        android:textColor="#0B2F3A"
         android:text="Result : "
         android:textSize="20dp"/>
     <ImageView
@@ -176,7 +188,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:textSize="17dp"
         android:textStyle="italic"
         android:text="For FULL OUTER JOIN, all the record will be shown as above even the records without linkage."
         />

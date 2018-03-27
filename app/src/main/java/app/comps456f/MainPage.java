@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
+//TODO: Specify teacher account
 public class MainPage extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
@@ -27,6 +27,11 @@ public class MainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close) {};
+        mDrawerLayout.addDrawerListener(mToggle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         // set main page layout
         init();
@@ -34,49 +39,34 @@ public class MainPage extends AppCompatActivity {
 
     public void init(){
         firebaseAuth = FirebaseAuth.getInstance();
+        NavigationView tech_nvDrawer = (NavigationView)findViewById(R.id.tech_view);
+        NavigationView nvDrawer = (NavigationView)findViewById(R.id.nav_view);
+
+
         if(firebaseAuth.getCurrentUser() ==null){
             finish();
             startActivity(new Intent(getApplicationContext(),LoginPage.class));
         }
-        if(firebaseAuth.getCurrentUser()!=null){
+        else if(firebaseAuth.getCurrentUser()!=null){
            // finish();
             //startActivity(new Intent(getApplicationContext(),MainPage.class));
-            FirebaseUser user =firebaseAuth.getCurrentUser();
+            FirebaseUser user = firebaseAuth.getCurrentUser();
             Toast.makeText(MainPage.this,"Welcome "+user.getEmail(),Toast.LENGTH_SHORT).show();
+
+            if (user.getEmail() != "ha@gmail.com"){
+                nvDrawer.setVisibility(View.VISIBLE);
+                tech_nvDrawer.setVisibility(View.GONE);
+                setDrawerContent(nvDrawer);
+            }
+            else{
+                nvDrawer.setVisibility(View.GONE);
+                tech_nvDrawer.setVisibility(View.VISIBLE);
+                setDrawerContent(tech_nvDrawer);
+
+            }
         }
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close) {
-
-        };
-        mDrawerLayout.addDrawerListener(mToggle);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        NavigationView nvDrawer = (NavigationView)findViewById(R.id.nav_view);
-        NavigationView nvDrawer2 = (NavigationView)findViewById(R.id.tech_view);
-
-       // if(job_title=="Student"){
-
-         //  nvDrawer.setVisibility(View.VISIBLE);
-          //  nvDrawer2.setVisibility(View.GONE);
-        //}
-        //else if(job_title=="Teacher"){
-            setDrawerContent(nvDrawer);
-           setDrawerContent(nvDrawer2);
-           // nvDrawer2.setVisibility(View.VISIBLE);
-            //nvDrawer.setVisibility(View.GONE);
-        //}
     }
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -102,7 +92,6 @@ public class MainPage extends AppCompatActivity {
             case R.id.nav_profile:
                 fClass = Profile.class;
                 break;
-
             case R.id.nav_tutor:
                 fClass = Tutorial.class;
                 break;

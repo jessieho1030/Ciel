@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
 public class Tutorial extends Fragment implements View.OnClickListener {
 
     private View view;
-    private RelativeLayout chapter1_rl,chapter2_rl,chapter3_rl;
+    private RelativeLayout chapter0_rl, chapter1_rl,chapter2_rl,chapter3_rl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,17 +40,24 @@ public class Tutorial extends Fragment implements View.OnClickListener {
     }
 
     public void init(){
+        chapter0_rl = (RelativeLayout) view.findViewById(R.id.chapter0Clicked);
         chapter1_rl = (RelativeLayout) view.findViewById(R.id.chapter1Clicked);
         chapter2_rl = (RelativeLayout) view.findViewById(R.id.chapter2Clicked);
         chapter3_rl = (RelativeLayout) view.findViewById(R.id.chapter3Clicked);
+        chapter0_rl.setOnClickListener(this);
         chapter1_rl.setOnClickListener(this);
         chapter2_rl.setOnClickListener(this);
         chapter3_rl.setOnClickListener(this);
     }
-    // TODO: Onclick Relative Layout
+    // Onclick Relative Layout
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.chapter0Clicked:{
+                Intent chapter1Intent = new Intent(getActivity(), Chapter0.class);
+                startActivity(chapter1Intent);
+                break;
+            }
             case R.id.chapter1Clicked:{
                 Intent chapter1Intent = new Intent(getActivity(), Chapter1.class);
                 startActivity(chapter1Intent);

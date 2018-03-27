@@ -18,7 +18,30 @@
     <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_weight="30"
+        android:layout_weight="25"
+        android:clickable="true"
+
+        android:id="@+id/chapter0Clicked"
+        >
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Chapter 0: Basic"
+            android:textSize="37dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/chapter0_title"></TextView>
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Basic concepts of SQL"
+            android:textSize="24dp"
+            android:layout_below="@+id/chapter0_title"></TextView>
+    </RelativeLayout>
+    <View android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"></View>
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="25"
         android:clickable="true"
 
         android:id="@+id/chapter1Clicked"
@@ -41,7 +64,7 @@
     <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_weight="30"
+        android:layout_weight="25"
         android:clickable="true"
 
         android:id="@+id/chapter2Clicked">
@@ -63,7 +86,7 @@
     <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_weight="30"
+        android:layout_weight="25"
         android:clickable="true"
 
         android:id="@+id/chapter3Clicked">

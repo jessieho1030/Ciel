@@ -12,6 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/chapter2_title"
+            android:textColor="#086A87"
             android:textSize="28dp"
             android:textStyle="bold"/>
 
@@ -22,6 +23,16 @@
             android:text="@string/chapter2_content1"
             android:textSize="20dp"/>
 
+        <View android:layout_height="4dp"
+            android:layout_width="match_parent"
+            android:background="@color/border"></View>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\n1. The COUNT() function returns the number of rows that matches a specified criteria.
+        \nE.g. Count the total number of the employee of Department ID=10."
+            android:textSize="20dp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,6 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="italic"
+            android:textColor="#0B2F3A"
             android:text="Result : "
             android:textSize="20dp"/>
         <ImageView
@@ -37,7 +49,9 @@
             android:layout_height="wrap_content"
             android:src="@drawable/solution5"
              />
-
+        <View android:layout_height="4dp"
+            android:layout_width="match_parent"
+            android:background="@color/border"></View>
         <!--Average-->
         <TextView
             android:layout_width="match_parent"
@@ -52,12 +66,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="italic"
+            android:textColor="#0B2F3A"
             android:text="Result : "
             android:textSize="20dp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/solution6"/>
+
+        <View android:layout_height="4dp"
+        android:layout_width="match_parent"
+        android:background="@color/border"></View>
 
         <!--Sum-->
         <TextView
@@ -73,6 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="italic"
+            android:textColor="#0B2F3A"
             android:text="Result : "
             android:textSize="20dp"/>
         <ImageView
@@ -80,6 +100,9 @@
             android:layout_height="wrap_content"
             android:src="@drawable/solution7"/>
 
+        <View android:layout_height="4dp"
+            android:layout_width="match_parent"
+            android:background="@color/border"></View>
         <!--Minimum-->
         <TextView
             android:layout_width="match_parent"
@@ -101,6 +124,9 @@
             android:layout_height="wrap_content"
             android:src="@drawable/solution8"/>
 
+        <View android:layout_height="4dp"
+            android:layout_width="match_parent"
+            android:background="@color/border"></View>
         <!--Maximum-->
         <TextView
             android:layout_width="match_parent"
@@ -115,6 +141,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="italic"
+            android:textColor="#0B2F3A"
             android:text="Result : "
             android:textSize="20dp"/>
         <ImageView
@@ -122,15 +149,20 @@
             android:layout_height="wrap_content"
             android:src="@drawable/solution9"/>
 
+        <View android:layout_height="4dp"
+            android:layout_width="match_parent"
+            android:background="@color/border"></View>
         <!--Structure Syntax-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#0B2F3A"
             android:text="\nNotes: \n * The GROUP BY statement is used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns."
             android:textSize="20dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#0B2F3A"
             android:text=" * The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions."
             android:textSize="20dp"/>
         <TextView
@@ -151,6 +183,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#0B2F3A"
             android:text="@string/chapter2_content6"
             android:textSize="20dp"/>
     </LinearLayout>

@@ -26,6 +26,7 @@
         <activity android:name=".LoginPage" />
         <activity android:name=".QuizPage" />
         <activity android:name=".teacher_cardview" />
+        <activity android:name=".Chapter0"></activity>
     </application>
 
 </manifest>
