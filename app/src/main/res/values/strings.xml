@@ -7,11 +7,114 @@
 
     <!--Tutorial contents-->
     <!--Chapter 0-->
-    <string name="chapter0_content1">What is SQL?
-        \n\t● In full form is Structured Query Language\n
-        \n\t● An American National Standards Institute (ANSI) standard\n
-        \n\t● Enables to access and manipulate database
+    <string name="chapter0_content1">Introduction:\n
+        Structured Query Language (SQL) is a standard language which allow accessing and manipulating databases.
     </string>
+    <string name="chapter0_content2">Components of Database Language: \n\n
+        1.\tData definition language (DDL)\n
+        - Allow definition of data types, structures and any data constraints.\n
+        - All definitions are stored in the database. \n\n
+        2.\tData manipulation language (DML)\n
+        – Query language of the data.\n
+        – Gives basic data manipulation operators on data stored in database
+    </string>
+
+    <string name="chapter0_content3">Create Table Statment:\n
+        ● to create a new table in database \n\n
+        CREATE TABLE table_name (\n
+        column1 datatype,\m
+        column2 datatype,\n
+	    column3 datatype, ... ); \n
+        E.g. Create table Employee with 4 columns.
+
+    </string>
+    <string name="chapter0_content4">ALTER TABLE statement:\n
+        ● to add, delete, or modify columns in an existing table\n
+        ● to add and drop serval constraints in an existing table \n\n
+        To add a column in a table:\n
+        ALTER TABLE table_name\n
+        ADD column_name datatype;\n\n
+        E.g. Add column entry year to table Employee.
+    </string>
+    <string name="chapter0_content5">
+        \nTo delete a column in a table:\n
+        ALTER TABLE table_name\n
+        DROP column_name datatype;\n\n
+        E.g. Delete column entry year to table Employee.
+    </string>
+    <string name="chapter0_content6">
+        \nTo change the data type a column in a table:\n
+        ALTER TABLE table_name\n
+        ALTER COLUMN column_name datatype;\n\n
+        E.g. Change the data tpye to VARCHAR of the column Employee_name.
+    </string>
+    <string name="chapter0_content7">DROP TABLE: \n
+        ● to drop an existing table in a database\n\n
+        DROP TABLE table_name;\n
+        E.g. Drop table Employee
+    </string>
+    <string name="chapter0_content8">INSERT INTO: \n
+        ● to insert new records in a table.\n\n
+        INSERT INTO table_name (column1, column2, column3, ...)\n
+        VALUES (value1, value2, value3, ...);\n
+        or\n
+        INSERT INTO table_name\n
+        VALUES (value1, value2, value3, ...);\n\n
+        E.g. Insert a record into table Department
+    </string>
+
+    <string name="chapter0_content9">UPDATE: \n
+        ● to modify the existing records in a table\n\n
+        UPDATE table_name\n
+        SET column1 = value1, column2 = value2, ...\n
+        WHERE condition;\n\n
+        E.g. Update Sam’s salary to $15000.
+    </string>
+
+    <string name="chapter0_content10">DELETE:\n
+        ● to delete existing records in a table\n\n
+        DELETE FROM table_name\n
+        WHERE conditions;\n\n
+        E.g. Delete the Sam’s record in table Employee.
+    </string>
+
+    <string name="chapter0_content11">SELECT Statement:\n
+        ● to select data from a database.\n
+        ● The data returned is stored in a result table, called the result-set.\n\n
+        SELECT column1, column2, ...\n
+        FROM table_name;\n
+        E.g. Select columns Employee_name, Salary from table Employee
+    </string>
+
+    <string name="chapter0_content12">\n● to select all the fields in the table\n
+        SELECT * FROM table_name;\n\n
+        E.g. Select all columns and all rows from tables Employee
+    </string>
+
+    <string name="chapter0_content13">SELECT DISTINCT Statement: \n
+        ● to return only distinct (different) values\n\n
+        SELECT DISTINCT column1, column2, ...\n
+        FROM table_name;\n\n
+        E.g. Select distinct department id from employee.
+    </string>
+
+    <string name="chapter0_content14">WHERE Clause: \n
+        ● to filter records and obtain only those records that suit a specified condition.\n\n
+        SELECT column1, column2, ...\n
+        FROM table_name\n
+        WHERE condition;\n\n
+        The following operators are used in a WHERE clause:
+    </string>
+    <string name="chapter0_content15">ORDER BY Keyword: \n
+        ● to sort the result-set in ascending or descending order.\n
+        ● by default, it sorts the records in ascending order .\n
+        ● to sort the records in descending order, use the DESC keyword.\n\n
+        SELECT column1, column2, ...\n
+        FROM table_name\n
+        ORDER BY column1, column2, ... ASC|DESC;\n\n
+        E.g. Select employee name and salary from table Employee, list by the descending order of salary.
+    </string>
+
 
     <!--Chapter 1-->
     <string name="chapter1_title">SQL Join \n</string>

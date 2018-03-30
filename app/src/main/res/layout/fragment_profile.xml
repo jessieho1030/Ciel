@@ -58,7 +58,7 @@
                         android:maxLength="30"
                         android:layout_height="match_parent"
                         android:ems="10"
-                        android:hint="Name"
+                        android:hint="Username"
                         android:imeOptions="actionGo"
                         android:inputType="text"
                         android:singleLine="true"
@@ -68,6 +68,21 @@
                         whatever:testType="regexp" />
                 </com.wrapp.floatlabelededittext.FloatLabeledEditText>
             </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Change Your Password"
+                android:textSize="21sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="25dp"
+                />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/darker_gray"
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -94,7 +109,7 @@
                         android:layout_height="match_parent"
                         android:maxLength="20"
                         android:ems="10"
-                        android:hint="Password"
+                        android:hint="New Password"
                         android:imeOptions="actionGo"
                         android:inputType="textPassword"
                         android:singleLine="true"

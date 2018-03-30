@@ -5,6 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+    android:layout_weight="100"
     >
 <LinearLayout
     android:layout_width="match_parent"
@@ -20,13 +21,12 @@
         android:layout_width="match_parent"
         android:layout_weight="25"
         android:clickable="true"
-
         android:id="@+id/chapter0Clicked"
         >
         <TextView android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Chapter 0: Basic"
-            android:textSize="37dp"
+            android:textSize="36dp"
             android:layout_centerVertical="true"
             android:id="@+id/chapter0_title"></TextView>
         <TextView android:layout_height="wrap_content"
@@ -43,13 +43,12 @@
         android:layout_width="match_parent"
         android:layout_weight="25"
         android:clickable="true"
-
         android:id="@+id/chapter1Clicked"
         >
         <TextView android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Chapter 1: Join"
-            android:textSize="37dp"
+            android:textSize="36dp"
             android:layout_centerVertical="true"
             android:id="@+id/chapter1_title"></TextView>
         <TextView android:layout_height="wrap_content"
@@ -66,12 +65,11 @@
         android:layout_width="match_parent"
         android:layout_weight="25"
         android:clickable="true"
-
         android:id="@+id/chapter2Clicked">
         <TextView android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Chapter 2: Aggregate"
-            android:textSize="38dp"
+            android:textSize="36dp"
             android:layout_centerVertical="true"
             android:id="@+id/chapter2_title"></TextView>
         <TextView android:layout_height="wrap_content"
@@ -93,7 +91,7 @@
         <TextView android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Chapter 3: Sub-Query"
-            android:textSize="38dp"
+            android:textSize="36dp"
             android:layout_centerVertical="true"
             android:id="@+id/chapter3_title"></TextView>
         <TextView android:layout_height="wrap_content"

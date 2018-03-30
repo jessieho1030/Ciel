@@ -15,22 +15,23 @@
         android:padding="2dp">
 
     </RelativeLayout>
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/nav_menu"
         android:visibility="gone"
-        ></android.support.design.widget.NavigationView>
-
+        app:menu="@menu/nav_menu"
+        />
     <android.support.design.widget.NavigationView
         android:id="@+id/tech_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/teacher_menu"
+        android:layout_gravity="end"
         android:visibility="gone"
-        ></android.support.design.widget.NavigationView>
+        app:menu="@menu/teacher_menu"
+        />
+
 
 </android.support.v4.widget.DrawerLayout>

@@ -1,15 +1,18 @@
 package app.comps456f;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.icu.text.RelativeDateTimeFormatter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -17,10 +20,9 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 //TODO: Specify teacher account
-public class MainPage extends AppCompatActivity {
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mToggle;
-    private String job_title;
+public class MainPage extends AppCompatActivity{
+    public DrawerLayout mDrawerLayout;
+    public ActionBarDrawerToggle mToggle;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -28,67 +30,79 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close) {};
-        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close) {
+            public void onDrawerClosed(View view) {
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+            public void onDrawerOpened(View drawerView) {
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+        init();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
+        mDrawerLayout.addDrawerListener(mToggle);
         // set main page layout
-        init();
+
     }
 
     public void init(){
         firebaseAuth = FirebaseAuth.getInstance();
-        NavigationView tech_nvDrawer = (NavigationView)findViewById(R.id.tech_view);
-        NavigationView nvDrawer = (NavigationView)findViewById(R.id.nav_view);
+
 
 
         if(firebaseAuth.getCurrentUser() ==null){
             finish();
             startActivity(new Intent(getApplicationContext(),LoginPage.class));
         }
-        else if(firebaseAuth.getCurrentUser()!=null){
-           // finish();
-            //startActivity(new Intent(getApplicationContext(),MainPage.class));
+        else if(firebaseAuth.getCurrentUser()!=null) {
             FirebaseUser user = firebaseAuth.getCurrentUser();
-            Toast.makeText(MainPage.this,"Welcome "+user.getEmail(),Toast.LENGTH_SHORT).show();
-
-            if (user.getEmail() != "ha@gmail.com"){
+            String email = user.getEmail();
+            if (!email.equals("ha@gmail.com")) {
+                Toast.makeText(MainPage.this, "Welcome2 " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                NavigationView nvDrawer = (NavigationView)findViewById(R.id.nav_view);
                 nvDrawer.setVisibility(View.VISIBLE);
-                tech_nvDrawer.setVisibility(View.GONE);
-                setDrawerContent(nvDrawer);
-            }
-            else{
-                nvDrawer.setVisibility(View.GONE);
-                tech_nvDrawer.setVisibility(View.VISIBLE);
-                setDrawerContent(tech_nvDrawer);
+                nvDrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        selectDrawer(item);
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        return true;
+                    }
+                });
+            } else {
+                Toast.makeText(MainPage.this, "Welcome1 " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                NavigationView navigationView = (NavigationView)findViewById(R.id.tech_view);
+                navigationView.setVisibility(View.VISIBLE);
+                navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+                        selectDrawer(item);
+                        mDrawerLayout.closeDrawer(GravityCompat.END);
+                        return true;
+                    }
+                });
             }
+
         }
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (mToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        //return super.onOptionsItemSelected(item);
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mToggle.syncState();
-    }
 
     public void selectDrawer(MenuItem item){
         Fragment mFragment = null;
         Class fClass;
         switch (item.getItemId()){
+            case R.id.tech_result:
+                fClass = TeacherResult.class;
+                break;
+            case R.id.tech_discuss:
+                fClass = Discuss.class;
+                break;
+            case R.id.tech_logout:
+                fClass = Logout.class;
+                break;
             case R.id.nav_profile:
                 fClass = Profile.class;
                 break;
@@ -107,12 +121,7 @@ public class MainPage extends AppCompatActivity {
             case R.id.nav_logout:
                 fClass = Logout.class;
                 break;
-            case R.id.tech_result:
-                fClass = TeacherResult.class;
-                break;
-            case R.id.tech_discuss:
-                fClass = Discuss.class;
-                break;
+
             default:
                 fClass = MainPage.class;
         }
@@ -122,62 +131,47 @@ public class MainPage extends AppCompatActivity {
         catch(Exception e){
             e.printStackTrace();
         }
+        if (mFragment !=null){
         FragmentManager fManager = getSupportFragmentManager();
         fManager.beginTransaction().replace(R.id.fContent,mFragment).commit();
         item.setChecked(true);
-        mDrawerLayout.closeDrawers();
-    }
-    private void setDrawerContent (NavigationView nv){
-        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                selectDrawer(item);
-                return true;
-            }
-        });
-    }
-
-
-
-   /* @Override
-    public boolean onNavigationItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.nav_tutor:
-                Intent tutorIntent = new Intent(MainPage.this, TutorPage.class);
-                startActivity(tutorIntent);
-                break;
-            case R.id.nav_quiz:
-                Intent quizIntent = new Intent(MainPage.this, QuizPage.class);
-                startActivity(quizIntent);
-                break;
-            case R.id.nav_result:
-                Intent resultIntent = new Intent(MainPage.this, ResultPage.class);
-                startActivity(resultIntent);
-                break;
-            case R.id.nav_logout:
-                Intent logoutIntent = new Intent(MainPage.this, LoginPage.class);
-                startActivity(logoutIntent);
-                break;
-
+        setTitle(item.getTitle());
         }
-        return true;
-    }*/
-  // methods call when click on menu items
-   /* public void tutorClicked (MenuItem menuItem){
-        Intent tutorIntent = new Intent(MainPage.this, TutorPage.class);
-        startActivity(tutorIntent);
     }
-    public void quizClicked (MenuItem menuItem){
-        Intent quizIntent = new Intent(MainPage.this, QuizPage.class);
-        startActivity(quizIntent);
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else if (mDrawerLayout.isDrawerOpen(GravityCompat.END)) {  /*Closes the Appropriate Drawer*/
+            mDrawerLayout.closeDrawer(GravityCompat.END);
+        } else {
+            super.onBackPressed();
+            System.exit(0);
+        }
     }
-    public void resultClicked (MenuItem menuItem){
-        Intent resultIntent = new Intent(MainPage.this, ResultPage.class);
-        startActivity(resultIntent);
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(mToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
-    public void logoutClicked (MenuItem menuItem){
-        Intent logoutIntent = new Intent(MainPage.this, LoginPage.class);
-        startActivity(logoutIntent);
-    }*/
+
+
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mToggle.syncState();
+    }
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass configurations
+        mToggle.onConfigurationChanged(newConfig);
+    }
+
+
 }
