@@ -27,6 +27,11 @@
         <activity android:name=".QuizPage" />
         <activity android:name=".teacher_cardview" />
         <activity android:name=".Chapter0"></activity>
+        <activity android:name=".Quiz0"></activity>
+        <activity android:name=".Quiz1"></activity>
+        <activity android:name=".Quiz2"></activity>
+        <activity android:name=".Quiz3"></activity>
+
     </application>
 
 </manifest>

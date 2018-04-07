@@ -4,79 +4,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
-
-        <TextView
-            android:id="@+id/question"
-            android:layout_width="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
             android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
-            android:text=""
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_below="@+id/question"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/optionGroup"
-            android:visibility="invisible">
-
-            <RadioButton
-                android:id="@+id/choice1"
+            android:layout_weight="25"
+            android:clickable="true"
+            android:id="@+id/tutorial0"
+            >
+            <TextView android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Choice1" />
+                android:text="Tutorial 0: Basic"
+                android:textSize="36dp"
+                android:layout_centerVertical="true"></TextView>
 
-            <RadioButton
-                android:id="@+id/choice2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Choice2" />
-
-            <RadioButton
-                android:id="@+id/choice3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Choice3" />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/response"
+        </RelativeLayout>
+        <View android:layout_height="2dp"
             android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDark"></View>
+        <RelativeLayout
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_below="@+id/optionGroup"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp" />
-
-        <Button
-            android:id="@+id/next"
-            android:onClick="quiz"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Start"
-            android:layout_below="@+id/response"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:id="@+id/score"
             android:layout_width="match_parent"
+            android:layout_weight="25"
+            android:clickable="true"
+            android:id="@+id/tutorial1"
+            >
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Tutorial 1: Join"
+                android:textSize="36dp"
+                android:layout_centerVertical="true"></TextView>
+
+        </RelativeLayout>
+        <View android:layout_height="2dp"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDark"></View>
+        <RelativeLayout
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="33dp"
-            android:layout_below="@+id/next"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-    </RelativeLayout>
+            android:layout_width="match_parent"
+            android:layout_weight="25"
+            android:clickable="true"
+            android:id="@+id/tutorial2">
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Tutorial  2: Aggregate"
+                android:textSize="36dp"
+                android:layout_centerVertical="true"></TextView>
+
+        </RelativeLayout>
+        <View android:layout_height="2dp"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDark"></View>
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="25"
+            android:clickable="true"
+            android:id="@+id/tutorial3">
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Tutorial 3: Sub-Query"
+                android:textSize="36dp"
+                android:layout_centerVertical="true"></TextView>
+
+        </RelativeLayout>
+    </LinearLayout>
 </FrameLayout>
