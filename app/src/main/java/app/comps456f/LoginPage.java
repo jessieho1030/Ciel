@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginPage extends AppCompatActivity implements View.OnClickListener{
     private View view;
     private ActionProcessButton btnLogin, btnRegister;
-    private FormEditText useremail,userpassword;
+    public FormEditText useremail,userpassword;
     private MyProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
 

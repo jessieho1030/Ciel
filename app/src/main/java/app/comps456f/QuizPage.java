@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.content.Intent;
 import android.widget.Toast;
@@ -32,12 +34,14 @@ public class QuizPage extends AppCompatActivity{
 
 
     private static final String KEY_SCORE = "keyScore";
+
     private static final String KEY_QUESTION_COUNT = "keyQuestionCount";
     private static final String KEY_TIME_LEFT = "keyTimeLeft";
     private static final String KEY_ANSWERED = "keyAnswered";
     private static final String KEY_QUESTION_LIST = "keyQuestionList";
 
-    private TextView question_tv,score_tv,count_question_tv,timer_tv, diff_tv;
+    private ScrollView scrollView;
+    private TextView question_tv,score_tv,count_question_tv,timer_tv;
     private RadioGroup radioGroup;
     private RadioButton rb1,rb2,rb3,rb4;
     private Button confirm_btn;
@@ -51,7 +55,7 @@ public class QuizPage extends AppCompatActivity{
 
     private long backpresstime;
     private ArrayList<Questions> questionList;
-
+    public ImageView image1_tv,image2_tv;
     private CountDownTimer countTimer;
     private long timeLeft;
 
@@ -59,7 +63,10 @@ public class QuizPage extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        image1_tv = (ImageView)findViewById(R.id.image1_tv);
+        image2_tv = (ImageView)findViewById(R.id.image2_tv);
 
+        scrollView = (ScrollView)findViewById(R.id.scrollView);
         question_tv = (TextView) findViewById(R.id.questions_tv);
         score_tv = (TextView) findViewById(R.id.score_tv);
         count_question_tv = (TextView) findViewById(R.id.count_question_tv);
@@ -70,13 +77,28 @@ public class QuizPage extends AppCompatActivity{
         rb3 = (RadioButton) findViewById(R.id.radio_btn3);
         rb4 = (RadioButton) findViewById(R.id.radio_btn4);
         confirm_btn = (Button) findViewById(R.id.btn_confirm);
-        diff_tv = (TextView)findViewById(R.id.difficulty);
-
         txtColorDefault = rb1.getTextColors();
         txtColorDefaultCount = timer_tv.getTextColors();
 
         Intent intent = getIntent();
         String difficulty = intent.getStringExtra(Quiz.EXTRA_DIFFICULTY);
+        int v1 = intent.getIntExtra(Quiz.IMAGE_VISIBLE,0);
+        switch (v1){
+            case 1:{
+                image1_tv.setVisibility(View.VISIBLE);
+                image2_tv.setVisibility(View.VISIBLE);
+                break;
+            }
+            case 2:{
+                image1_tv.setVisibility(View.VISIBLE);
+                break;
+            }
+            case 3:{
+                image1_tv.setVisibility(View.VISIBLE);
+                break;
+            }
+
+        }
 
         if(savedInstanceState == null) {
             QuizDb db = new QuizDb(this);

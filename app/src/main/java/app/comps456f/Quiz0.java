@@ -15,7 +15,7 @@ import android.widget.TextView;
  */
 
 public class Quiz0 extends AppCompatActivity{
-    private static final int REQUEST_CODE_QUIZ = 1;
+    private static final int REQUEST_CODE_QUIZ = 0;
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_HIGHSCROE = "keyHighScore";
@@ -47,7 +47,9 @@ public class Quiz0 extends AppCompatActivity{
     public void startQuiz0(){
         Intent quiz0intent = new Intent(this,QuizPage.class);
         quiz0intent.getStringExtra(Quiz.EXTRA_DIFFICULTY);
+
         quiz0intent.putExtra(Quiz.EXTRA_DIFFICULTY,"Quiz0");
+
         startActivityForResult(quiz0intent,REQUEST_CODE_QUIZ);
         //startActivityForResult(quiz0intent, REQUEST_CODE_QUIZ);
     }
@@ -69,12 +71,12 @@ public class Quiz0 extends AppCompatActivity{
     private void loadHighScore(){
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         HighScore = prefs.getInt(KEY_HIGHSCROE, 0);
-        highscore_tv.setText("High Score:   " + HighScore);
+        highscore_tv.setText("Highest Score:   " + HighScore);
     }
 
     private void updateHighscore(int highScorenew){
         HighScore = highScorenew;
-        highscore_tv.setText("High Score:   " + HighScore);
+        highscore_tv.setText("Highest Score:   " + HighScore);
 
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();

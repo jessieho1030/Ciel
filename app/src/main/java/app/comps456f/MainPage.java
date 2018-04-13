@@ -59,7 +59,7 @@ public class MainPage extends AppCompatActivity{
             FirebaseUser user = firebaseAuth.getCurrentUser();
             String email = user.getEmail();
             if (!email.equals("ha@gmail.com")) {
-                Toast.makeText(MainPage.this, "Welcome2 " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainPage.this, "Welcome " + user.getEmail(), Toast.LENGTH_SHORT).show();
                 NavigationView nvDrawer = (NavigationView)findViewById(R.id.nav_view);
                 nvDrawer.setVisibility(View.VISIBLE);
                 nvDrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
@@ -71,7 +71,7 @@ public class MainPage extends AppCompatActivity{
                     }
                 });
             } else {
-                Toast.makeText(MainPage.this, "Welcome1 " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainPage.this, "Welcome " + user.getEmail(), Toast.LENGTH_SHORT).show();
                 NavigationView navigationView = (NavigationView)findViewById(R.id.tech_view);
                 navigationView.setVisibility(View.VISIBLE);
                 navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
@@ -85,6 +85,9 @@ public class MainPage extends AppCompatActivity{
                 });
             }
 
+        }
+        else{
+            Toast.makeText(this,"User email/User password is not match. Please try again.",Toast.LENGTH_SHORT).show();
         }
 
     }

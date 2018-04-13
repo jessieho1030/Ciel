@@ -83,9 +83,9 @@ public class RegisterPage extends AppCompatActivity implements View.OnClickListe
                     progressDialog.dimiss();
                     if (task.isSuccessful()) {
 
-                        SaveUserInformation saveInfo = new SaveUserInformation(name,email);
+
                         FirebaseUser user = firebaseAuth.getCurrentUser();
-                        myRef.child(user.getUid()).setValue(saveInfo);
+                      //  myRef.child(user.getUid()).setValue(saveInfo);
                         Toast.makeText(RegisterPage.this, "Register Successfully", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(RegisterPage.this, "Could not register...please try again", Toast.LENGTH_SHORT).show();
@@ -93,10 +93,6 @@ public class RegisterPage extends AppCompatActivity implements View.OnClickListe
                 }
 
         });
-
-    }
-
-    public void saveUserInformation(){
 
     }
 

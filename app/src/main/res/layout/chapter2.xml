@@ -170,6 +170,10 @@
             android:layout_height="wrap_content"
             android:text="\nFor example: Select the Department ID and Calculate the number of employee in the department which obtain more than 3 employee."
             android:textSize="20dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/example26"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
