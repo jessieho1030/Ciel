@@ -10,16 +10,28 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
+
 /**
  * Created by hoyin on 31/3/2018.
  */
 
 public class Quiz2 extends AppCompatActivity {
 
-    private static final int REQUEST_CODE_QUIZ = 2;
+    public static final int REQUEST_CODE_QUIZ = 2;
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_HIGHSCROE2 = "keyHighScore2";
 
+    private DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String uID= user.getUid();
 
     private TextView highscore_tv;
     private int HighScore;
@@ -45,7 +57,6 @@ public class Quiz2 extends AppCompatActivity {
         Intent quiz2intent = new Intent(this,QuizPage.class);
         quiz2intent.getStringExtra(Quiz.IMAGE_VISIBLE);
         quiz2intent.getStringExtra(Quiz.EXTRA_DIFFICULTY);
-
         quiz2intent.putExtra(Quiz.EXTRA_DIFFICULTY,"Quiz2");
         quiz2intent.putExtra(Quiz.IMAGE_VISIBLE,2);
         startActivityForResult(quiz2intent, REQUEST_CODE_QUIZ);
@@ -61,12 +72,20 @@ public class Quiz2 extends AppCompatActivity {
                 if(score > HighScore){
                     updateHighscore(score);
                 }
+                else{
+                    mdatabase.child("user").child(uID).child("quiz").child("2").child("score").setValue(HighScore);//store score in firebase
+                }
             }
         }
     }
 
     private void loadHighScore(){
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        df.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        Calendar c = Calendar.getInstance();
+        String rightNow = df.format(c.getTime());
+        mdatabase.child("user").child(uID).child("quiz").child("2").child("datetime").setValue(rightNow); //store datetime in firebase
         HighScore = prefs.getInt(KEY_HIGHSCROE2, 0);
         highscore_tv.setText("Highest Score:   " + HighScore);
     }
@@ -74,7 +93,12 @@ public class Quiz2 extends AppCompatActivity {
     private void updateHighscore(int highScorenew){
         HighScore = highScorenew;
         highscore_tv.setText("Highest Score:   " + HighScore);
-
+        mdatabase.child("user").child(uID).child("quiz").child("2").child("score").setValue(HighScore);//update score in firebase
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        df.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        Calendar c = Calendar.getInstance();
+        String rightNow = df.format(c.getTime());
+        mdatabase.child("user").child(uID).child("quiz").child("0").child("datetime").setValue(rightNow); //update datetime in firebase
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(KEY_HIGHSCROE2, HighScore);

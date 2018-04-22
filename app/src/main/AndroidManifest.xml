@@ -19,18 +19,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Chapter1" />
-        <activity android:name=".Chapter2" />
-        <activity android:name=".Chapter3" />
-        <activity android:name=".RegisterPage" />
-        <activity android:name=".LoginPage" />
-        <activity android:name=".QuizPage" />
-        <activity android:name=".teacher_cardview" />
+        <activity android:name=".Chapter1"/>
+        <activity android:name=".Chapter2"/>
+        <activity android:name=".Chapter3"/>
+        <activity android:name=".RegisterPage"/>
+        <activity android:name=".LoginPage"/>
+        <activity android:name=".QuizPage"/>
+        <activity android:name=".teacher_cardview"/>
         <activity android:name=".Chapter0"></activity>
         <activity android:name=".Quiz0"></activity>
         <activity android:name=".Quiz1"></activity>
         <activity android:name=".Quiz2"></activity>
         <activity android:name=".Quiz3"></activity>
+        <activity android:name=".TeacherPage"></activity>
 
     </application>
 

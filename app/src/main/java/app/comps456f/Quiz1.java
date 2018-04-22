@@ -10,14 +10,27 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
+
 /**
  * Created by hoyin on 31/3/2018.
  */
 
 public class Quiz1 extends AppCompatActivity {
-    private static final int REQUEST_CODE_QUIZ = 1;
+    public static final int REQUEST_CODE_QUIZ = 1;
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_HIGHSCROE1 = "keyHighScore1";
+
+    private DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String uID= user.getUid();
 
     private TextView highscore_tv;
     private int HighScore;
@@ -64,6 +77,9 @@ public class Quiz1 extends AppCompatActivity {
                 if(score > HighScore){
                     updateHighscore(score);
                 }
+                else{
+                    mdatabase.child("user").child(uID).child("quiz").child("1").child("score").setValue(HighScore);//store score in firebase
+                }
             }
         }
     }
@@ -71,13 +87,23 @@ public class Quiz1 extends AppCompatActivity {
     private void loadHighScore(){
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         HighScore = prefs.getInt(KEY_HIGHSCROE1, 0);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        df.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        Calendar c = Calendar.getInstance();
+        String rightNow = df.format(c.getTime());
+        mdatabase.child("user").child(uID).child("quiz").child("1").child("datetime").setValue(rightNow); //store datetime in firebase
         highscore_tv.setText("Highest Score:   " + HighScore);
     }
 
     private void updateHighscore(int highScorenew){
         HighScore = highScorenew;
         highscore_tv.setText("Highest Score:   " + HighScore);
-
+        mdatabase.child("user").child(uID).child("quiz").child("1").child("score").setValue(HighScore);//update score in firebase
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        df.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        Calendar c = Calendar.getInstance();
+        String rightNow = df.format(c.getTime());
+        mdatabase.child("user").child(uID).child("quiz").child("1").child("datetime").setValue(rightNow); //update datetime in firebase
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(KEY_HIGHSCROE1, HighScore);

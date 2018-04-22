@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextClock;
 import android.widget.TextView;
 
@@ -20,12 +21,21 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 
 public class Teacher_Recycler_adapter extends RecyclerView.Adapter<Teacher_Recycler_adapter.ViewHolder> implements View.OnClickListener {
-    String [] student_name,student_rank;
 
-    public Teacher_Recycler_adapter(String[] student_name, String[] student_rank) {
+   ArrayList<String> student_id = new ArrayList<String>();
+    ArrayList<String> student_name = new ArrayList<String>();
+    ArrayList<String> studscore = new ArrayList<String>();
+    ArrayList<String> submit = new ArrayList<String>();
+    CheckBox reminder;
+
+
+
+    public Teacher_Recycler_adapter( ArrayList<String> student_id, ArrayList<String> student_name , ArrayList<String> studscore, ArrayList<String> submit,CheckBox reminder) {
+        this.student_id = student_id;
         this.student_name =student_name;
-        this.student_rank=student_rank;
-
+        this.studscore = studscore;
+        this.submit = submit;
+        this.reminder =reminder;
     }
 
     @Override
@@ -39,8 +49,12 @@ public class Teacher_Recycler_adapter extends RecyclerView.Adapter<Teacher_Recyc
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.student_name.setText(student_name[position]);
-        holder.student_rank.setText(student_rank[position]);
+
+        holder.student_id.setText(student_id.get(position));
+        holder.student_name.setText(student_name.get(position));
+        holder.studscore.setText(studscore.get(position));
+        holder.submit.setText(submit.get(position));
+        holder.reminder.setChecked(false);
     }
 
 
@@ -49,15 +63,23 @@ public class Teacher_Recycler_adapter extends RecyclerView.Adapter<Teacher_Recyc
 
     }
 
+    @Override
+    public int getItemCount() {
+        return student_name.size();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView student_name,student_rank;
-        public CircleImageView studimg;
+        public TextView student_name,student_id, studscore, submit;
+        public CheckBox reminder;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            student_id = (TextView)itemView.findViewById(R.id.studID);
             student_name = (TextView)itemView.findViewById(R.id.studname);
-            student_rank = (TextView)itemView.findViewById(R.id.studrank);
-            studimg = (CircleImageView)itemView.findViewById(R.id.studimg);
+            studscore = (TextView)itemView.findViewById(R.id.studscore);
+            submit = (TextView)itemView.findViewById(R.id.quizSub);
+            reminder = (CheckBox)itemView.findViewById(R.id.reminderCheckBox);
+
         }
 
         @Override
@@ -66,8 +88,4 @@ public class Teacher_Recycler_adapter extends RecyclerView.Adapter<Teacher_Recyc
         }
     }
 
-    @Override
-    public int getItemCount() {
-        return student_name.length;
-    }
 }

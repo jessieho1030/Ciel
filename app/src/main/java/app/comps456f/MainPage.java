@@ -135,10 +135,10 @@ public class MainPage extends AppCompatActivity{
             e.printStackTrace();
         }
         if (mFragment !=null){
-        FragmentManager fManager = getSupportFragmentManager();
-        fManager.beginTransaction().replace(R.id.fContent,mFragment).commit();
-        item.setChecked(true);
-        setTitle(item.getTitle());
+            FragmentManager fManager = getSupportFragmentManager();
+            fManager.beginTransaction().replace(R.id.fContent,mFragment).commit();
+            item.setChecked(true);
+            setTitle(item.getTitle());
         }
     }
     @Override

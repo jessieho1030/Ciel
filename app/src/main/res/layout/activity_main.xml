@@ -8,9 +8,9 @@
 
 
     <RelativeLayout
+        android:id="@+id/fContent"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/fContent"
         android:background="#EAF2FA"
         android:padding="2dp">
 
@@ -24,6 +24,8 @@
         android:visibility="gone"
         app:menu="@menu/nav_menu"
         />
+
+
     <android.support.design.widget.NavigationView
         android:id="@+id/tech_view"
         android:layout_width="match_parent"
@@ -32,6 +34,4 @@
         android:visibility="gone"
         app:menu="@menu/teacher_menu"
         />
-
-
 </android.support.v4.widget.DrawerLayout>

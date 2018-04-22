@@ -9,62 +9,69 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="62dp"
         android:background="#800a3a47"
-        android:padding="4dp">
+        android:padding="7dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/studimg"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+
+        <TextView
+            android:id="@+id/studID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"
-            android:src="@drawable/defaultpropic"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            app:civ_border_color="#FFFFFFFF"
-            app:civ_border_width="2dp" />
+            android:layout_marginEnd="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="student id"
+            android:textColor="#c9e6ff"
+            android:textSize="16dp" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="0.2" />
 
         <TextView
             android:id="@+id/studname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_toLeftOf="@+id/studrank"
-            android:layout_toStartOf="@+id/studrank"
+            android:layout_marginTop="10dp"
             android:text="student name"
             android:textColor="#c9e6ff"
             android:textSize="16dp" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
         <TextView
-            android:id="@+id/studrank"
+            android:id="@+id/studscore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
+            android:text="score"
+            android:textColor="#c9e6ff"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/quizSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="5dp"
-            android:text="student rank"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="submit"
             android:textColor="#c9e6ff"
             android:textSize="16dp" />
 
-
+        <CheckBox
+            android:id="@+id/reminderCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:buttonTint="#c9e6ff" />
 
 
     </LinearLayout>
