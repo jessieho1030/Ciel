@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * Created by hoyin on 14/4/2018.
  */
 
-    //TODO: Get quiz result from all student
+//TODO: Get quiz result from all student
 
 public class TeacherPage extends AppCompatActivity {
     CheckBox reminder;
@@ -68,39 +68,39 @@ public class TeacherPage extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
                         for (DataSnapshot uniqueKey : dataSnapshot.getChildren()){
-                          // loop for every student
+                            // loop for every student
 
-                              //loop in every field in each student
+                            //loop in every field in each student
 
-                              String name = uniqueKey.child("name").getValue(String.class);
-                              String id =   uniqueKey.child("sid").getValue(String.class);
-                             // Log.v(" Student_id","Retrive : " + uniqueKey.child("sid").getValue(String.class));
-                             // Log.v(" Student_name","Retrive : " + uniqueKey.child("name").getValue(String.class));
+                            String name = uniqueKey.child("name").getValue(String.class);
+                            String id =   uniqueKey.child("sid").getValue(String.class);
+                            // Log.v(" Student_id","Retrive : " + uniqueKey.child("sid").getValue(String.class));
+                            // Log.v(" Student_name","Retrive : " + uniqueKey.child("name").getValue(String.class));
                             student_id.add(id);
                             student_name.add(name);
 
-                                  //loop for quiz record
+                            //loop for quiz record
 
-                                  if (uniqueKey.child("quiz").child("0").getChildren()!= null&& !uniqueKey.child("quiz/0").child("score").getValue().equals("null")
-                                          && !uniqueKey.child("quiz/0").child("datetime").getValue().equals("null")) {
-                                      String dodate = "Submitted";
-                                      String mark = Long.toString(uniqueKey.child("quiz/0").child("score").getValue(Long.class));
+                            if (uniqueKey.child("quiz").child("0").getChildren()!= null&& !uniqueKey.child("quiz/0").child("score").getValue().equals("null")
+                                    && !uniqueKey.child("quiz/0").child("datetime").getValue().equals("null")) {
+                                String dodate = "Submitted";
+                                String mark = Long.toString(uniqueKey.child("quiz/0").child("score").getValue(Long.class));
 
-                                      //Log.v(" Do-Date", "Retrive : " + uniqueKey.child("quiz/0").child("datetime").getValue(String.class));
-                                      //Log.v(" Student_mark", "Retrive : " + uniqueKey.child("quiz/0").child("score").getValue(Long.class));
-                                      studscore.add("      "+mark+"      ");
-                                      submit.add(dodate);
-                                  }
-                                  else {
-                                      String notSubmit = "Not Submit";
-                                      String nomark = "       -       ";
-                                      submit.add(notSubmit);
-                                      studscore.add(nomark);
-                                      // quiz 0 has no record
-                                  }
+                                //Log.v(" Do-Date", "Retrive : " + uniqueKey.child("quiz/0").child("datetime").getValue(String.class));
+                                //Log.v(" Student_mark", "Retrive : " + uniqueKey.child("quiz/0").child("score").getValue(Long.class));
+                                studscore.add("      "+mark+"      ");
+                                submit.add(dodate);
+                            }
+                            else {
+                                String notSubmit = "Not Submit";
+                                String nomark = "       -       ";
+                                submit.add(notSubmit);
+                                studscore.add(nomark);
+                                // quiz 0 has no record
+                            }
                         }
 
-                       tra = new Teacher_Recycler_adapter(student_id,student_name,studscore,submit,reminder);
+                        tra = new Teacher_Recycler_adapter(student_id,student_name,studscore,submit,reminder);
                         teacher_result_recycler.setAdapter(tra);
                     }
 
