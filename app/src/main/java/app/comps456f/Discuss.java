@@ -3,6 +3,7 @@ package app.comps456f;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,14 @@ public class Discuss extends Fragment implements View.OnClickListener{
         cat_2.setOnClickListener(this);
         cat_3.setOnClickListener(this);
         cat_4.setOnClickListener(this);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CreatePost.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -49,24 +58,28 @@ public class Discuss extends Fragment implements View.OnClickListener{
         switch (view.getId()){
             case R.id.category1:{
                 Intent intent = new Intent(getActivity(), Discuss_tab.class);
+                intent.putExtra(Discuss.CATEGORY,"Join");
                 startActivity(intent);
                 break;
             }
 
             case R.id.category2:{
                 Intent intent = new Intent(getActivity(), Discuss_tab.class);
+                intent.putExtra(Discuss.CATEGORY,"Aggregate");
                 startActivity(intent);
                 break;
             }
 
             case R.id.category3:{
                 Intent intent = new Intent(getActivity(), Discuss_tab.class);
+                intent.putExtra(Discuss.CATEGORY,"Sub-query");
                 startActivity(intent);
                 break;
             }
 
             case R.id.category4:{
                 Intent intent = new Intent(getActivity(),Discuss_tab.class);
+                intent.putExtra(Discuss.CATEGORY,"Other");
                 startActivity(intent);
                 break;
             }
@@ -78,11 +91,12 @@ public class Discuss extends Fragment implements View.OnClickListener{
         }
     }
 
-    /*
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }*/
+   /*
+   @Override
+   public void onAttach(Context context) {
+       super.onAttach(context);
+   }*/
 
 }
+
 

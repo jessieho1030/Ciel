@@ -1,5 +1,6 @@
 package app.comps456f;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -31,10 +32,8 @@ public class Discuss_tab extends AppCompatActivity{
     TabLayout tab;
     ViewPager viewPager;
     ViewPagerAdaptor viewPagerAdaptor;
-    //private int commentId;
-    private String author;
-    private String text;
-    private long timecreate;
+
+
     private DatabaseReference mDatabase;
     //mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -42,7 +41,6 @@ public class Discuss_tab extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.discuss);
-
         tab = (TabLayout)findViewById(R.id.tab);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPagerAdaptor = new ViewPagerAdaptor(getSupportFragmentManager());
@@ -51,25 +49,23 @@ public class Discuss_tab extends AppCompatActivity{
         viewPagerAdaptor.addFragments(new tab_read(), "All");
         viewPager.setAdapter(viewPagerAdaptor);
         tab.setupWithViewPager(viewPager);
-
+        init();
+        Intent intent = getIntent();
+        String category = intent.getStringExtra(Discuss.CATEGORY);
     }
 
 
 
-    private void getComment(){
-
-
-
+    public void init(){
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Discuss_tab.this, CreatePost.class);
+                startActivity(intent);
+            }
+        });
     }
-
-    private void writeComment(String author, String text, long timecreate){
-        this.author = author;
-        this.text = text;
-        this.timecreate = timecreate;
-
-    }
-
-
 
 
 }

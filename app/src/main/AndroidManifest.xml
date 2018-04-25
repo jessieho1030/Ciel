@@ -27,13 +27,16 @@
         <activity android:name=".QuizPage" />
         <activity android:name=".Category1" />
         <activity android:name=".Discuss_tab" />
+        <activity android:name=".CreatePost" />
         <activity android:name=".teacher_cardview"/>
+        <activity android:name=".Discuss_postCardView"/>
         <activity android:name=".Chapter0"></activity>
         <activity android:name=".Quiz0"></activity>
         <activity android:name=".Quiz1"></activity>
         <activity android:name=".Quiz2"></activity>
         <activity android:name=".Quiz3"></activity>
         <activity android:name=".TeacherPage"></activity>
+
 
     </application>
 
