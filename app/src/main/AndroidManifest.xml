@@ -12,6 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +28,7 @@
         <activity android:name=".QuizPage" />
         <activity android:name=".Category1" />
         <activity android:name=".Discuss_tab" />
-        <activity android:name=".CreatePost" />
         <activity android:name=".teacher_cardview"/>
-        <activity android:name=".Discuss_postCardView"/>
         <activity android:name=".Chapter0"></activity>
         <activity android:name=".Quiz0"></activity>
         <activity android:name=".Quiz1"></activity>
@@ -37,6 +36,20 @@
         <activity android:name=".Quiz3"></activity>
         <activity android:name=".TeacherPage"></activity>
 
+        <receiver android:name=".BroadCast.NotificationReceiver"/>
+
+        <service
+            android:name=".FirebaseService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".FirebaseMessage">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
 
     </application>
 

@@ -11,7 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
+import com.dd.processbutton.iml.ActionProcessButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +22,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by hoyin on 14/4/2018.
@@ -28,15 +31,17 @@ import java.util.ArrayList;
 //TODO: Get quiz result from all student
 
 public class TeacherPage extends AppCompatActivity {
-    CheckBox reminder;
-    String whichQuiz;
+    public static final String list_notification = "notification";
+    private CheckBox reminder;
+    private String whichQuiz;
     private RecyclerView teacher_result_recycler;
     private ArrayList<String> student_id = new ArrayList<String>();
     private ArrayList<String> student_name = new ArrayList<String>();
     private ArrayList<String> studscore = new ArrayList<>();
     private ArrayList<String> submit = new ArrayList<String>();
     private Teacher_Recycler_adapter tra;
-
+    private ActionProcessButton btnreminder, btnselectall;
+    private ArrayList<ArrayList<String>> studremind = new ArrayList<>();
 
     private DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference().child("user");
 
@@ -52,13 +57,49 @@ public class TeacherPage extends AppCompatActivity {
 
     public void init(){
         Bundle b = getIntent().getExtras();
+
         whichQuiz = b.getString("quiz_no");
         renderResult(whichQuiz);
         teacher_result_recycler = (RecyclerView)findViewById(R.id.teacher_result_recycler);
         teacher_result_recycler.setLayoutManager(new LinearLayoutManager(this));
-        reminder = (CheckBox)findViewById(R.id.reminderCheckBox);
+
+
+
+        btnreminder = (ActionProcessButton)findViewById(R.id.btnreminder);
+        btnreminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for (int i = 0; i < tra.student_name.size(); i++){
+                    studremind.add(tra.remindname);
+                }
+                if(tra.remindname.size() > 0) {
+                    Toast.makeText(TeacherPage.this,studremind.toString() + "are added to notification list",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(TeacherPage.this, Notification.class);
+
+                    //mStringArray = studremind.toArray(mStringArray);
+
+                    String [] mStringArray = new String[studremind.size()];
+                    for (int i = 0; i < studremind.size(); i++) {
+                    mStringArray[i] = studremind.get(i).toString();
+                    }
+                    intent.putExtra(list_notification,mStringArray);
+                    startActivity(intent);
+                }
+                else {
+                    // if reminder check box is not checked,
+                    String re = "no one";
+                    ArrayList<String> ha = new ArrayList<String>();
+                    ha.add(re);
+                    studremind.add(ha);
+                    Toast.makeText(TeacherPage.this,studremind.toString() + "is added to notification list",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        btnselectall = (ActionProcessButton)findViewById(R.id.btnselectall);
 
     }
+
     public void renderResult(String quizno){
         switch (quizno){
             case "Quiz 0":{
@@ -69,7 +110,6 @@ public class TeacherPage extends AppCompatActivity {
 
                         for (DataSnapshot uniqueKey : dataSnapshot.getChildren()){
                             // loop for every student
-
                             //loop in every field in each student
 
                             String name = uniqueKey.child("name").getValue(String.class);
@@ -90,16 +130,17 @@ public class TeacherPage extends AppCompatActivity {
                                 //Log.v(" Student_mark", "Retrive : " + uniqueKey.child("quiz/0").child("score").getValue(Long.class));
                                 studscore.add("      "+mark+"      ");
                                 submit.add(dodate);
+
                             }
                             else {
                                 String notSubmit = "Not Submit";
                                 String nomark = "       -       ";
                                 submit.add(notSubmit);
                                 studscore.add(nomark);
+
                                 // quiz 0 has no record
                             }
                         }
-
                         tra = new Teacher_Recycler_adapter(student_id,student_name,studscore,submit,reminder);
                         teacher_result_recycler.setAdapter(tra);
                     }
@@ -209,7 +250,6 @@ public class TeacherPage extends AppCompatActivity {
 
                         for (DataSnapshot uniqueKey : dataSnapshot.getChildren()){
                             // loop for every student
-
                             //loop in every field in each student
 
                             String name = uniqueKey.child("name").getValue(String.class);
@@ -239,20 +279,14 @@ public class TeacherPage extends AppCompatActivity {
                                 studscore.add(nomark);
                                 // quiz 3 has no record
                             }
-
-
                         }
 
                         tra = new Teacher_Recycler_adapter(student_id,student_name,studscore,submit,reminder);
                         teacher_result_recycler.setAdapter(tra);
-
                     }
 
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                    public void onCancelled(DatabaseError databaseError) {}});
                 break;
             }
 

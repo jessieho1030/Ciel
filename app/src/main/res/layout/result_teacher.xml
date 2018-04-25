@@ -81,16 +81,41 @@
             android:paddingTop="10dp"
             android:scrollbars="vertical"/>
 
-    <com.dd.processbutton.iml.ActionProcessButton
-        android:id="@+id/btnreminder"
-        android:layout_width="340dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.dd.processbutton.iml.ActionProcessButton
+            android:id="@+id/btnreminder"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/btnselectall"
+            android:layout_gravity="center"
+            android:maxLength="50"
+            android:text="Submit"
+            android:textColor="#ffffff"
+            android:textSize="13sp"
+            whatever:pb_colorComplete="#644099"
+            whatever:pb_colorError="@color/red_error"
+            whatever:pb_colorNormal="#644099"
+            whatever:pb_colorPressed="#644099"
+            whatever:pb_colorProgress="#644099"
+            whatever:pb_textComplete="Success"
+            whatever:pb_textError="Error"
+            whatever:pb_textProgress="Loading" />
+
+        <com.dd.processbutton.iml.ActionProcessButton
+        android:id="@+id/btnselectall"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
         android:maxLength="50"
-        android:text="Submit"
-        android:textColor="#ffffff"
+        android:text="Select all"
+            android:textColor="#ffffff"
         android:textSize="13sp"
         whatever:pb_colorComplete="#644099"
         whatever:pb_colorError="@color/red_error"
@@ -98,9 +123,8 @@
         whatever:pb_colorPressed="#644099"
         whatever:pb_colorProgress="#644099"
         whatever:pb_textComplete="Success"
-        whatever:pb_textError="Error"
-        whatever:pb_textProgress="Loading"/>
-
-
+            whatever:pb_textError="Error"
+            whatever:pb_textProgress="Loading" />
+    </RelativeLayout>
     </LinearLayout>
 </ScrollView>

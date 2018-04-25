@@ -39,8 +39,6 @@ public class Quiz1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tutorial1);
         highscore_tv = (TextView) findViewById(R.id.text_view_highscore);
-
-
         loadHighScore();
         Button btn_quiz = (Button) findViewById(R.id.button_start_quiz);
         btn_quiz.setOnClickListener(new View.OnClickListener(){
@@ -57,10 +55,7 @@ public class Quiz1 extends AppCompatActivity {
 
         Intent quiz1intent = new Intent(this,QuizPage.class);
         quiz1intent.getStringExtra(Quiz.IMAGE_VISIBLE);
-
         quiz1intent.getStringExtra(Quiz.EXTRA_DIFFICULTY);
-
-
         quiz1intent.putExtra(Quiz.EXTRA_DIFFICULTY,"Quiz1");
         quiz1intent.putExtra(Quiz.IMAGE_VISIBLE, 1);
 

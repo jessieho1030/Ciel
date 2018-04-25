@@ -41,10 +41,6 @@ public class Quiz0 extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tutorial0);
         highscore_tv = (TextView) findViewById(R.id.text_view_highscore);
-        String[] difficultyLevels = Questions.getAllDifficulty();
-
-
-
         loadHighScore();
         Button btn_quiz = (Button) findViewById(R.id.button_start_quiz);
         btn_quiz.setOnClickListener(new View.OnClickListener(){
@@ -59,9 +55,7 @@ public class Quiz0 extends AppCompatActivity{
     public void startQuiz0(){
         Intent quiz0intent = new Intent(this,QuizPage.class);
         quiz0intent.getStringExtra(Quiz.EXTRA_DIFFICULTY);
-
         quiz0intent.putExtra(Quiz.EXTRA_DIFFICULTY,"Quiz0");
-
         startActivityForResult(quiz0intent,REQUEST_CODE_QUIZ);
         //startActivityForResult(quiz0intent, REQUEST_CODE_QUIZ);
     }
