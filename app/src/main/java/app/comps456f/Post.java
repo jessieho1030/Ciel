@@ -53,7 +53,7 @@ public class Post {
     public void setTime(String time) {
         this.time = time;
     }
-
+/*
     public String getRecomment() {
         return recomment;
     }
@@ -70,6 +70,15 @@ public class Post {
         this.readBy = readBy;
     }
 
+*/
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Post() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
@@ -81,15 +90,8 @@ public class Post {
         this.text = text;
         this.time = time;
         this.name = name;
-        recomment = "null";
-        readBy = "null";
+        //recomment = "null";
+        //readBy = "null";
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

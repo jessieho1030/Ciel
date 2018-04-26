@@ -90,25 +90,23 @@ public class CreatePost extends AppCompatActivity {
 
 
     public void writeComment(){
-        //DatabaseReference ref = mDatabase.child("user").child(author).child("name");
+        mDatabase.child("user/"+ author +"/name").addListenerForSingleValueEvent (new ValueEventListener() {
 
-
-        ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                 name = dataSnapshot.child("user").child("author").child("name").getValue(String.class);
+                 name = dataSnapshot.getValue(String.class);
+                //Post post = new Post(author, category, subject, text, time);
+                Post post = new Post(author, subject, text, time, name);
+                mDatabase.child("comment").child(category).push().setValue(post);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
             }
-        };
-        mDatabase.addValueEventListener(postListener);
 
-        //Post post = new Post(author, category, subject, text, time);
-        Post post = new Post(author, subject, text, time, name);
-        mDatabase.child("comment").child(category).push().setValue(post);
+        });
+
+
     }
 
 

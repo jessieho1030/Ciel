@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by meiyuk on 25/4/2018.
- */
 
 public class Discuss_recycler_adapter extends RecyclerView.Adapter<Discuss_recycler_adapter.ViewHolder> implements View.OnClickListener {
 
@@ -45,7 +42,6 @@ public class Discuss_recycler_adapter extends RecyclerView.Adapter<Discuss_recyc
 
     @Override
     public void onClick(View view) {
-
     }
 
     @Override
@@ -61,7 +57,6 @@ public class Discuss_recycler_adapter extends RecyclerView.Adapter<Discuss_recyc
             subject = (TextView)itemView.findViewById(R.id.subject);
             name = (TextView)itemView.findViewById(R.id.text);
             time = (TextView)itemView.findViewById(R.id.time);
-
         }
 
         @Override
