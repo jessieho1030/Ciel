@@ -23,12 +23,17 @@
         <activity android:name=".Chapter1" />
         <activity android:name=".Chapter2" />
         <activity android:name=".Chapter3" />
+        <activity android:name=".CreatePost" />
+        <activity android:name=".ReadPost" />
+
         <activity android:name=".RegisterPage" />
         <activity android:name=".LoginPage" />
         <activity android:name=".QuizPage" />
         <activity android:name=".Category1" />
         <activity android:name=".Discuss_tab" />
         <activity android:name=".teacher_cardview"/>
+        <activity android:name=".ReadNewPost"/>
+
         <activity android:name=".Chapter0"></activity>
         <activity android:name=".Quiz0"></activity>
         <activity android:name=".Quiz1"></activity>

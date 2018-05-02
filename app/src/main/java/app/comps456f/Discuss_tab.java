@@ -52,8 +52,8 @@ public class Discuss_tab extends AppCompatActivity implements TabLayout.OnTabSel
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPagerAdaptor = new ViewPagerAdaptor(getSupportFragmentManager());
-        viewPagerAdaptor.addFragments(tab_read.newInstance());
         viewPagerAdaptor.addFragments(tab_unread.newInstance());
+        viewPagerAdaptor.addFragments(tab_read.newInstance());
         viewPagerAdaptor.addFragments(tab_all.newInstance());
         viewPager.setOffscreenPageLimit(1);
         /*

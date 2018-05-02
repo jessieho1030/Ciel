@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -63,9 +64,6 @@ public class ReadPost extends AppCompatActivity {
         pid = intent.getStringExtra("pid");
         category = intent.getStringExtra("category");
 
-
-        System.out.print("hiiiiiiiiiiiiiiiii");
-        // read by
         mDatabase.child("comment").child(category).child(pid).child("readby").child(reader).setValue("true");
         getPostData(pid);
         getComment(pid);
@@ -73,19 +71,32 @@ public class ReadPost extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 FormEditText comment = (FormEditText) findViewById(R.id.comment);
                 comment_text = comment.getText().toString();
-                // Apr 24, 2018 6:21:40 PM
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                df.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-                Calendar c = Calendar.getInstance();
-                comment_time = df.format(c.getTime());
-                writeComment();
+                if(TextUtils.isEmpty(comment_text))
+                    Toast.makeText(ReadPost.this, "Comment must not empty", Toast.LENGTH_SHORT).show();
+                else{
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    df.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+                    Calendar c = Calendar.getInstance();
+                    comment_time = df.format(c.getTime());
+                    mDatabase.child("user/"+ reader +"/name").addListenerForSingleValueEvent (new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            name = dataSnapshot.getValue(String.class);
+                            Comment comment = new Comment(name, comment_text, comment_time);
+                            mDatabase.child("comment").child(category).child(pid).child("recomment").push().setValue(comment);
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
+                    Toast.makeText(ReadPost.this, "Comment successful", Toast.LENGTH_SHORT).show();
+                    finish();
+                    startActivity(getIntent());
+                }
 
-                Toast.makeText(ReadPost.this, "Comment successful", Toast.LENGTH_SHORT).show();
-                finish();
-                startActivity(getIntent());
+
             }
         });
 
@@ -130,17 +141,13 @@ public class ReadPost extends AppCompatActivity {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Comment comment = ds.getValue(Comment.class);
                     comments.add(comment);
-                    if(comment!= null)
-                        Log.d("comment not null","blabla");
                 }
+
                 if(comments != null){
                     Collections.reverse(comments);
                     adapter = new ListViewAdapter(ReadPost.this, comments);
-                    //adapter = new ListViewAdapter(ReadPost.this, comments);
                     adapter.notifyDataSetChanged();
-
                     listView.setAdapter(adapter);
-                   // adapter.notifyDataSetChanged();
                 }
 
             }
@@ -150,59 +157,8 @@ public class ReadPost extends AppCompatActivity {
 
             }
         });
-
-        /*
-        mDatabase.child("comment").child(category).child(pid).child("recomment").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                String string = dataSnapshot.getValue(String.class);
-                Log.d("string", string);
-                //recomment.add(string);
-                //adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
-
     }
-    public void writeComment(){
-        mDatabase.child("user/"+ reader +"/name").addListenerForSingleValueEvent (new ValueEventListener() {
 
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                name = dataSnapshot.getValue(String.class);
-                Comment comment = new Comment(name, comment_text, comment_time);
-                mDatabase.child("comment").child(category).child(pid).child("recomment").push().setValue(comment);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-
-        });
-
-
-    }
 
 
 }

@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.content.Intent;
 import android.widget.ArrayAdapter;
@@ -63,29 +64,39 @@ public class CreatePost extends AppCompatActivity {
                 text = content.getText().toString();
                 FormEditText title = (FormEditText) findViewById(R.id.title);
                 subject = title.getText().toString();
-                category = spinner.getSelectedItem().toString();
-                // Apr 24, 2018 6:21:40 PM
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                df.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-                Calendar c = Calendar.getInstance();
-                time = df.format(c.getTime());
-                writeComment();
-                Toast.makeText(CreatePost.this,"Post successful", Toast.LENGTH_SHORT).show();
-                /*
+
+                if(TextUtils.isEmpty(text)){
+                    Toast.makeText(CreatePost.this, "Content must not empty", Toast.LENGTH_SHORT).show();
+
+                }
+                else if(TextUtils.isEmpty(subject)){
+                    Toast.makeText(CreatePost.this, "Title must not empty", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    category = spinner.getSelectedItem().toString();
+                    // Apr 24, 2018 6:21:40 PM
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    df.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+                    Calendar c = Calendar.getInstance();
+                    time = df.format(c.getTime());
+                    writeComment();
+                    Toast.makeText(CreatePost.this, "Post successful", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(CreatePost.this, Discuss_tab.class);
                 intent.putExtra("subject",subject);
                 intent.putExtra("text",text);
                 intent.putExtra("time",time);
                 intent.putExtra("category", category);
-                startActivity(intent);*/
-                //startActivity(new Intent(CreatePost.this, ReadNewPost.class));
-                Discuss fragment = new Discuss();
-                //FragmentManager fragmentManager = getSupportFragmentManager();
-                //fragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
-                android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, fragment);
-                ft.addToBackStack(null);
-                ft.commit();
+                startActivity(intent);
+                    //startActivity(new Intent(CreatePost.this, ReadNewPost.class));
+                    //Discuss fragment = new Discuss();
+                    //FragmentManager fragmentManager = getSupportFragmentManager();
+                    //fragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
+                    /*android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, fragment);
+                    ft.addToBackStack(null);
+                    ft.commit();*/
+                }
             }
         });
     }
