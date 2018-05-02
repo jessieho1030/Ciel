@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class tab_read extends Fragment{
+public class tab_unread extends Fragment{
     private View rootView;
     private String postId;
     private String category;
@@ -34,23 +34,21 @@ public class tab_read extends Fragment{
     private ArrayList<String> name = new ArrayList<String>();
     private ArrayList<String> time = new ArrayList<String>();
     private ArrayList<String> pid = new ArrayList<String>();
-    private Discuss_recycler_adapter draR;
-    private RecyclerView rv2;
+    private Discuss_recycler_adapter draU;
+    private RecyclerView rv1;
 
     private DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference().child("comment");
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String reader = user.getUid();
 
-    public tab_read() {
+    public tab_unread() {
         // Required empty public constructor
     }
 
-    public static tab_read newInstance(){
-        tab_read tab_read = new tab_read();
-        return  tab_read;
+    public static tab_unread newInstance(){
+        tab_unread tab_unread = new tab_unread();
+        return tab_unread;
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,18 +65,22 @@ public class tab_read extends Fragment{
     }
 
     public String toString(){
-        return "Read";
+        return "Unread";
     }
 
 
     public void init(){
-        getDataBaseData(category);
-        rv2 = (RecyclerView) rootView.findViewById(R.id.post_recycler_view);
-        rv2.setHasFixedSize(true);
 
-        rv2.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        //rv.setLayoutManager(llm);
+        getDataBaseData(category);
+
+        rv1 = (RecyclerView) rootView.findViewById(R.id.post_recycler_view);
+        rv1.setHasFixedSize(true);
+
+        //dra = new Discuss_recycler_adapter(subject,name,time,pid);
+        //rv.setAdapter(dra);
+
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        rv1.setLayoutManager(llm);
     }
 
     public void getDataBaseData(final String category){
@@ -87,45 +89,39 @@ public class tab_read extends Fragment{
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 pid.clear();
                 name.clear();
                 subject.clear();
                 time.clear();
-
                 for (DataSnapshot uniqueKey : dataSnapshot.child(category).getChildren()) {
 
 
+                    //loop in every field in each comment
                     String post_id = uniqueKey.getKey();
                     String post_name = uniqueKey.child("name").getValue(String.class);
                     String post_subject = uniqueKey.child("subject").getValue(String.class);
                     String post_time = uniqueKey.child("time").getValue(String.class);
 
-                    String read = uniqueKey.child("readby").child(reader).getValue(String.class);
-                    //Log.v(" Student_id","Retrive : " + uniqueKey.child("name").getValue(String.class));
-                    //Log.v(" Student_name","Retrive : " + uniqueKey.child("subject").getValue(String.class));
-                    //Log.v(" key","Retrive : " + uniqueKey.getKey());
+                    Log.v(" Student_id","Retrive : " + uniqueKey.child("name").getValue(String.class));
+                    Log.v(" Student_name","Retrive : " + uniqueKey.child("subject").getValue(String.class));
+                    Log.v(" key","Retrive : " + uniqueKey.getKey());
 
-                    if(read != null){
-                        //loop in every field in each comment
-                        Log.v(" Student_id","Retrive : " + uniqueKey.child("name").getValue(String.class));
-                        Log.v(" Student_name","Retrive : " + uniqueKey.child("subject").getValue(String.class));
-                        Log.v(" key","Retrive : " + uniqueKey.getKey());
-                        Log.d("readby", uniqueKey.child("readby").child(reader).getValue(String.class));
+                    if(uniqueKey.child("readby").child(reader).getValue(String.class) == null){
                         pid.add(post_id);
                         name.add(post_name);
                         subject.add(post_subject);
                         time.add(post_time);
                     }
+
                 }
                 Collections.reverse(subject);
                 Collections.reverse(name);
                 Collections.reverse(time);
                 Collections.reverse(pid);
-                draR = new Discuss_recycler_adapter(subject, name , time, pid, category);
-                rv2.setAdapter(draR);
-                draR.notifyDataSetChanged();
+                draU = new Discuss_recycler_adapter(subject, name, time, pid, category);
+                draU.notifyDataSetChanged();
 
+                rv1.setAdapter(draU);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -135,6 +131,9 @@ public class tab_read extends Fragment{
 
     };
 
+
+
+    
 
 }
 

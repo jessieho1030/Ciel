@@ -1,10 +1,12 @@
 package app.comps456f;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,6 @@ public class Discuss extends Fragment implements View.OnClickListener{
     private View view;
     private RelativeLayout cat_1, cat_2, cat_3, cat_4;
     public static final String CATEGORY = "cat";
-    //public static final String IMAGE_VISIBLE = String.valueOf(View.VISIBLE);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class Discuss extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_discuss, container, false);
+        view.setBackgroundColor(Color.parseColor("#EAF2FA"));
         init();
         return view;
     }
@@ -58,28 +60,29 @@ public class Discuss extends Fragment implements View.OnClickListener{
         switch (view.getId()){
             case R.id.category1:{
                 Intent intent = new Intent(getActivity(), Discuss_tab.class);
-                intent.putExtra(Discuss.CATEGORY,"Join");
+                //intent.putExtra(Discuss.CATEGORY, "Join");
+                intent.putExtra("category","Join");
                 startActivity(intent);
                 break;
             }
 
             case R.id.category2:{
                 Intent intent = new Intent(getActivity(), Discuss_tab.class);
-                intent.putExtra(Discuss.CATEGORY,"Aggregate");
+                intent.putExtra("category","Aggregate");
                 startActivity(intent);
                 break;
             }
 
             case R.id.category3:{
                 Intent intent = new Intent(getActivity(), Discuss_tab.class);
-                intent.putExtra(Discuss.CATEGORY,"Sub-query");
+                intent.putExtra("category","Sub-query");
                 startActivity(intent);
                 break;
             }
 
             case R.id.category4:{
                 Intent intent = new Intent(getActivity(),Discuss_tab.class);
-                intent.putExtra(Discuss.CATEGORY,"Other");
+                intent.putExtra("category","Other");
                 startActivity(intent);
                 break;
             }
@@ -90,13 +93,6 @@ public class Discuss extends Fragment implements View.OnClickListener{
 
         }
     }
-
-   /*
-   @Override
-   public void onAttach(Context context) {
-       super.onAttach(context);
-   }*/
-
 }
 
 

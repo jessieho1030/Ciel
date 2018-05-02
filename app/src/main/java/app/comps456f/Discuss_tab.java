@@ -1,7 +1,10 @@
 package app.comps456f;
 
+import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.AppCompatActivity;
@@ -23,16 +26,12 @@ import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-/*
- * Created by meiyuk on 21/3/2018.
- */
 
-public class Discuss_tab extends AppCompatActivity{
+public class Discuss_tab extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
 
     TabLayout tab;
     ViewPager viewPager;
     ViewPagerAdaptor viewPagerAdaptor;
-
 
     private DatabaseReference mDatabase;
     //mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -41,19 +40,49 @@ public class Discuss_tab extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.discuss);
+
+        // Get category from discuss.class
+        Intent intent = getIntent();
+        //String category = intent.getStringExtra(Discuss.CATEGORY);
+        String category = intent.getStringExtra("category");
+        intent.putExtra("category",category);
+
+        // Create tab
         tab = (TabLayout)findViewById(R.id.tab);
+
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPagerAdaptor = new ViewPagerAdaptor(getSupportFragmentManager());
+        viewPagerAdaptor.addFragments(tab_read.newInstance());
+        viewPagerAdaptor.addFragments(tab_unread.newInstance());
+        viewPagerAdaptor.addFragments(tab_all.newInstance());
+        viewPager.setOffscreenPageLimit(1);
+        /*
         viewPagerAdaptor.addFragments(new tab_read(), "Read");
         viewPagerAdaptor.addFragments(new tab_read(), "Unread");
-        viewPagerAdaptor.addFragments(new tab_read(), "All");
+        viewPagerAdaptor.addFragments(new tab_read(), "All");*/
         viewPager.setAdapter(viewPagerAdaptor);
-        tab.setupWithViewPager(viewPager);
-        init();
-        Intent intent = getIntent();
-        String category = intent.getStringExtra(Discuss.CATEGORY);
-    }
 
+/*
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                viewPager.getAdapter().notifyDataSetChanged();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });*/
+        tab.setupWithViewPager(viewPager);
+        tab.addOnTabSelectedListener(this);
+        init();
+    }
 
 
     public void init(){
@@ -66,6 +95,23 @@ public class Discuss_tab extends AppCompatActivity{
             }
         });
     }
+
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
+    }
+
 
 
 }

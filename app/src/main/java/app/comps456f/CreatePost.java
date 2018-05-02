@@ -1,42 +1,31 @@
 package app.comps456f;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentPagerAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TimeZone;
 
 import com.andreabaccega.widget.FormEditText;
-import com.dd.processbutton.iml.ActionProcessButton;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import android.util.Log;
 import android.view.View;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class CreatePost extends AppCompatActivity {
@@ -81,7 +70,22 @@ public class CreatePost extends AppCompatActivity {
                 Calendar c = Calendar.getInstance();
                 time = df.format(c.getTime());
                 writeComment();
-                startActivity(new Intent(CreatePost.this, Discuss_tab.class));
+                Toast.makeText(CreatePost.this,"Post successful", Toast.LENGTH_SHORT).show();
+                /*
+                Intent intent = new Intent(CreatePost.this, Discuss_tab.class);
+                intent.putExtra("subject",subject);
+                intent.putExtra("text",text);
+                intent.putExtra("time",time);
+                intent.putExtra("category", category);
+                startActivity(intent);*/
+                //startActivity(new Intent(CreatePost.this, ReadNewPost.class));
+                Discuss fragment = new Discuss();
+                //FragmentManager fragmentManager = getSupportFragmentManager();
+                //fragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
+                android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
     }
