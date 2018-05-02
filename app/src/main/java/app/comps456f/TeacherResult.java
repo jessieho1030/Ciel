@@ -2,6 +2,7 @@ package app.comps456f;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -37,6 +38,7 @@ public class TeacherResult extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        view =  inflater.inflate(R.layout.fragment_teacher_result, container, false);
+        view.setBackgroundColor(Color.parseColor("#EAF2FA"));
         init();
         return view;
     }

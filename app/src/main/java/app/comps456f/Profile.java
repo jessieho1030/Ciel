@@ -53,6 +53,8 @@ public class Profile extends Fragment{
             @Override
             public void onClick(View view) {
                 change(view);
+                Intent intent = new Intent(getActivity(), MainPage.class);
+                startActivity(intent);
             }
         });
         auth = FirebaseAuth.getInstance();
@@ -92,5 +94,6 @@ public class Profile extends Fragment{
 
         }
     }
+
 
 }

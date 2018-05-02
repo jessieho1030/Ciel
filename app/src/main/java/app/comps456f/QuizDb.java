@@ -16,7 +16,7 @@ import app.comps456f.QuizContract.*;
 
 public class QuizDb extends SQLiteOpenHelper {
     private static final  String DATABASE_NAME = "Quiz.db";
-    private static final  int DATABASE_VERSION = 6;
+    private static final  int DATABASE_VERSION = 7;
 
     private SQLiteDatabase db;
 

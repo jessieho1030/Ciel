@@ -28,7 +28,7 @@ import java.util.Arrays;
  * Created by hoyin on 14/4/2018.
  */
 
-//TODO: Get quiz result from all student
+
 
 public class TeacherPage extends AppCompatActivity {
     public static final String list_notification = "notification";
@@ -40,9 +40,9 @@ public class TeacherPage extends AppCompatActivity {
     private ArrayList<String> studscore = new ArrayList<>();
     private ArrayList<String> submit = new ArrayList<String>();
     private Teacher_Recycler_adapter tra;
-    private ActionProcessButton btnreminder, btnselectall;
+    private ActionProcessButton btnreminder;
     private ArrayList<ArrayList<String>> studremind = new ArrayList<>();
-
+    private String user_id;
     private DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference().child("user");
 
 
@@ -83,6 +83,7 @@ public class TeacherPage extends AppCompatActivity {
                     mStringArray[i] = studremind.get(i).toString();
                     }
                     intent.putExtra(list_notification,mStringArray);
+                    intent.putExtra("user_id",user_id);
                     startActivity(intent);
                 }
                 else {
@@ -96,7 +97,6 @@ public class TeacherPage extends AppCompatActivity {
 
             }
         });
-        btnselectall = (ActionProcessButton)findViewById(R.id.btnselectall);
 
     }
 
@@ -111,7 +111,8 @@ public class TeacherPage extends AppCompatActivity {
                         for (DataSnapshot uniqueKey : dataSnapshot.getChildren()){
                             // loop for every student
                             //loop in every field in each student
-
+                            user_id = uniqueKey.getKey().toString();
+                            Log.v("Student ID"," is : " + user_id);
                             String name = uniqueKey.child("name").getValue(String.class);
                             String id =   uniqueKey.child("sid").getValue(String.class);
                             // Log.v(" Student_id","Retrive : " + uniqueKey.child("sid").getValue(String.class));
@@ -159,7 +160,8 @@ public class TeacherPage extends AppCompatActivity {
                         for (DataSnapshot uniqueKey : dataSnapshot.getChildren()){
                             // loop for every student
                             //loop in every field in each student
-
+                            user_id = uniqueKey.getKey().toString();
+                            Log.v("Student ID"," is : " + user_id);
                             String name = uniqueKey.child("name").getValue(String.class);
                             String id =   uniqueKey.child("sid").getValue(String.class);
                             // Log.v(" Student_id","Retrive : " + uniqueKey.child("sid").getValue(String.class));
@@ -206,7 +208,8 @@ public class TeacherPage extends AppCompatActivity {
                         for (DataSnapshot uniqueKey : dataSnapshot.getChildren()){
                             // loop for every student
                             //loop in every field in each student
-
+                            user_id = uniqueKey.getKey().toString();
+                            Log.v("Student ID"," is : " + user_id);
                             String name = uniqueKey.child("name").getValue(String.class);
                             String id =   uniqueKey.child("sid").getValue(String.class);
                             // Log.v(" Student_id","Retrive : " + uniqueKey.child("sid").getValue(String.class));
@@ -251,7 +254,8 @@ public class TeacherPage extends AppCompatActivity {
                         for (DataSnapshot uniqueKey : dataSnapshot.getChildren()){
                             // loop for every student
                             //loop in every field in each student
-
+                            user_id = uniqueKey.getKey().toString();
+                            Log.v("Student ID"," is : " + user_id);
                             String name = uniqueKey.child("name").getValue(String.class);
                             String id =   uniqueKey.child("sid").getValue(String.class);
                             // Log.v(" Student_id","Retrive : " + uniqueKey.child("sid").getValue(String.class));

@@ -30,7 +30,7 @@ import java.util.Locale;
 
 public class QuizPage extends AppCompatActivity{
     public static final String EXTRA_SCORE = "extraScore";
-    private static final long COUNTDOWN = 30000;
+    private static final long COUNTDOWN = 120000;
 
 
     private static final String KEY_SCORE = "keyScore";
@@ -39,7 +39,7 @@ public class QuizPage extends AppCompatActivity{
     private static final String KEY_TIME_LEFT = "keyTimeLeft";
     private static final String KEY_ANSWERED = "keyAnswered";
     private static final String KEY_QUESTION_LIST = "keyQuestionList";
-
+    public ImageView image1_tv,image2_tv;
     private ScrollView scrollView;
     private TextView question_tv,score_tv,count_question_tv,timer_tv;
     private RadioGroup radioGroup;
@@ -52,10 +52,8 @@ public class QuizPage extends AppCompatActivity{
     private Questions currentQuestion;
     private int score;
     private boolean answered;
-
     private long backpresstime;
     private ArrayList<Questions> questionList;
-    public ImageView image1_tv,image2_tv;
     private CountDownTimer countTimer;
     private long timeLeft;
 
@@ -82,6 +80,10 @@ public class QuizPage extends AppCompatActivity{
 
         Intent intent = getIntent();
         String difficulty = intent.getStringExtra(Quiz.EXTRA_DIFFICULTY);
+
+
+
+
         int v1 = intent.getIntExtra(Quiz.IMAGE_VISIBLE,0);
         switch (v1){
             case 1:{
@@ -119,7 +121,8 @@ public class QuizPage extends AppCompatActivity{
 
             if(!answered){
                 startCountDown();
-            }else{
+            }
+            else {
                 updateCountDownTxt();
                 showSolution();
             }

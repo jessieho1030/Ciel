@@ -1,104 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="app.comps456f.Tutorial"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
     android:layout_weight="100"
+    android:orientation="vertical"
+    tools:context="app.comps456f.Tutorial"
     >
 <LinearLayout
+    android:id="@+id/tut_linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="100"
-    android:orientation="vertical"
-    android:id="@+id/tut_linearLayout"
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true"
+    android:layout_weight="100"
+    android:orientation="vertical"
     >
     <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_weight="25"
-        android:clickable="true"
         android:id="@+id/chapter0Clicked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:clickable="true"
         >
-        <TextView android:layout_height="wrap_content"
+        <TextView android:id="@+id/chapter0_title"
             android:layout_width="match_parent"
-            android:text="Chapter 0: Basic"
-            android:textSize="36dp"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:id="@+id/chapter0_title"></TextView>
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:text="Chapter 1: Basic"
+            android:textSize="36dp"></TextView>
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chapter0_title"
             android:text="Basic concepts of SQL"
-            android:textSize="24dp"
-            android:layout_below="@+id/chapter0_title"></TextView>
+            android:textSize="24dp"></TextView>
     </RelativeLayout>
-    <View android:layout_height="2dp"
-        android:layout_width="match_parent"
+    <View android:layout_width="match_parent"
+        android:layout_height="2dp"
         android:background="@color/colorPrimaryDark"></View>
     <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_weight="25"
-        android:clickable="true"
         android:id="@+id/chapter1Clicked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:clickable="true"
         >
-        <TextView android:layout_height="wrap_content"
+        <TextView android:id="@+id/chapter1_title"
             android:layout_width="match_parent"
-            android:text="Chapter 1: Join"
-            android:textSize="36dp"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:id="@+id/chapter1_title"></TextView>
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:text="Chapter 2: Join"
+            android:textSize="36dp"></TextView>
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chapter1_title"
             android:text="Join functions of SQL"
-            android:textSize="24dp"
-            android:layout_below="@+id/chapter1_title"></TextView>
+            android:textSize="24dp"></TextView>
     </RelativeLayout>
-    <View android:layout_height="2dp"
-        android:layout_width="match_parent"
+    <View android:layout_width="match_parent"
+        android:layout_height="2dp"
         android:background="@color/colorPrimaryDark"></View>
     <RelativeLayout
-        android:layout_height="wrap_content"
+        android:id="@+id/chapter2Clicked"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="25"
-        android:clickable="true"
-        android:id="@+id/chapter2Clicked">
-        <TextView android:layout_height="wrap_content"
+        android:clickable="true">
+        <TextView android:id="@+id/chapter2_title"
             android:layout_width="match_parent"
-            android:text="Chapter 2: Aggregate"
-            android:textSize="36dp"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:id="@+id/chapter2_title"></TextView>
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:text="Chapter 3: Aggregate"
+            android:textSize="36dp"></TextView>
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chapter2_title"
             android:text="Aggregate functions of SQL"
-            android:textSize="24dp"
-            android:layout_below="@+id/chapter2_title"></TextView>
+            android:textSize="24dp"></TextView>
     </RelativeLayout>
-    <View android:layout_height="2dp"
-        android:layout_width="match_parent"
+    <View android:layout_width="match_parent"
+        android:layout_height="2dp"
         android:background="@color/colorPrimaryDark"></View>
     <RelativeLayout
-        android:layout_height="wrap_content"
+        android:id="@+id/chapter3Clicked"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="25"
-        android:clickable="true"
 
-        android:id="@+id/chapter3Clicked">
-        <TextView android:layout_height="wrap_content"
+        android:clickable="true">
+        <TextView android:id="@+id/chapter3_title"
             android:layout_width="match_parent"
-            android:text="Chapter 3: Sub-Query"
-            android:textSize="36dp"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:id="@+id/chapter3_title"></TextView>
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:text="Chapter 4: Sub-Query"
+            android:textSize="36dp"></TextView>
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chapter3_title"
             android:text="Sub-Queries of SQL"
-            android:textSize="24dp"
-            android:layout_below="@+id/chapter3_title"></TextView>
+            android:textSize="24dp"></TextView>
     </RelativeLayout>
 </LinearLayout>
 </RelativeLayout>

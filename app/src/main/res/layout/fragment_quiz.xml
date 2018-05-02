@@ -9,66 +9,66 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <RelativeLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_weight="25"
-            android:clickable="true"
             android:id="@+id/tutorial0"
-            >
-            <TextView android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:text="Tutorial 0: Basic"
-                android:textSize="36dp"
-                android:layout_centerVertical="true"></TextView>
-
-        </RelativeLayout>
-        <View android:layout_height="2dp"
             android:layout_width="match_parent"
-            android:background="@color/colorPrimaryDark"></View>
-        <RelativeLayout
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             android:layout_weight="25"
             android:clickable="true"
+            >
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Quiz 1 : Basic"
+                android:textSize="36dp"></TextView>
+
+        </RelativeLayout>
+        <View android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimaryDark"></View>
+        <RelativeLayout
             android:id="@+id/tutorial1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:clickable="true"
             >
-            <TextView android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:text="Tutorial 1: Join"
-                android:textSize="36dp"
-                android:layout_centerVertical="true"></TextView>
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Quiz 2 : Join"
+                android:textSize="36dp"></TextView>
 
         </RelativeLayout>
-        <View android:layout_height="2dp"
-            android:layout_width="match_parent"
+        <View android:layout_width="match_parent"
+            android:layout_height="2dp"
             android:background="@color/colorPrimaryDark"></View>
         <RelativeLayout
-            android:layout_height="wrap_content"
+            android:id="@+id/tutorial2"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="25"
-            android:clickable="true"
-            android:id="@+id/tutorial2">
-            <TextView android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:text="Tutorial  2: Aggregate"
-                android:textSize="36dp"
-                android:layout_centerVertical="true"></TextView>
+            android:clickable="true">
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Quiz  3 : Aggregate"
+                android:textSize="36dp"></TextView>
 
         </RelativeLayout>
-        <View android:layout_height="2dp"
-            android:layout_width="match_parent"
+        <View android:layout_width="match_parent"
+            android:layout_height="2dp"
             android:background="@color/colorPrimaryDark"></View>
         <RelativeLayout
-            android:layout_height="wrap_content"
+            android:id="@+id/tutorial3"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="25"
-            android:clickable="true"
-            android:id="@+id/tutorial3">
-            <TextView android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:text="Tutorial 3: Sub-Query"
-                android:textSize="36dp"
-                android:layout_centerVertical="true"></TextView>
+            android:clickable="true">
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Quiz 4 : Sub-Query"
+                android:textSize="36dp"></TextView>
 
         </RelativeLayout>
     </LinearLayout>

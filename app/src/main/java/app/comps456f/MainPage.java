@@ -46,9 +46,11 @@ public class MainPage extends AppCompatActivity{
     private static final String TAG = "MainPage";
     public DrawerLayout mDrawerLayout;
     public ActionBarDrawerToggle mToggle;
+
     BroadcastReceiver registrationBoradcast;
     private FirebaseAuth firebaseAuth;
     private Button getToken;
+    private String token;
     @Override
     protected void onPause(){
         LocalBroadcastManager.getInstance(this).unregisterReceiver(registrationBoradcast);
@@ -68,16 +70,17 @@ public class MainPage extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         registerNotification();
-        /*getToken = (Button)findViewById(R.id.getToken);
-        getToken.setOnClickListener(new View.OnClickListener() {
+       /*getToken = (Button)findViewById(R.id.getToken);
+       getToken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String token = FirebaseInstanceId.getInstance().getToken();
-                Log.d(TAG,"Token : " + token);
+                token = FirebaseInstanceId.getInstance().getToken();
+                Log.d(TAG,"Token "+token);
                 Toast.makeText(MainPage.this,token,Toast.LENGTH_SHORT).show();
             }
         });*/
 
+        //Log.d(TAG,"Token : " + token);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close) {
             public void onDrawerClosed(View view) {
@@ -95,13 +98,17 @@ public class MainPage extends AppCompatActivity{
 
     }
 
+
+    //receive firebase broadcast notification
     private void registerNotification() {
         registrationBoradcast = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if(intent.getAction().equals(FirebaseMessage.PUSH_NOT)){
+                String action = intent.getStringExtra(FirebaseMessage.PUSH_NOT);
+                if(intent.getAction().equals(action)){
                     String message  = intent.getStringExtra("message");
-                    showNotification("Ciel",message);
+                    String title = intent.getStringExtra("title");
+                    showNotification(title , message);
                 }
             }
 
@@ -136,7 +143,7 @@ public class MainPage extends AppCompatActivity{
         else if(firebaseAuth.getCurrentUser()!=null) {
             FirebaseUser user = firebaseAuth.getCurrentUser();
             String email = user.getEmail();
-            if (!email.equals("ha@gmail.com")) {
+            if (!email.equals("g1183411@study.ouhk.edu.hk")) {
 
                 registerAlarm(); //for daily notification
                 Toast.makeText(MainPage.this, "Welcome " + user.getEmail(), Toast.LENGTH_SHORT).show();
@@ -151,6 +158,7 @@ public class MainPage extends AppCompatActivity{
                     }
                 });
             } else {
+
                 Toast.makeText(MainPage.this, "Welcome " + user.getEmail(), Toast.LENGTH_SHORT).show();
                 NavigationView navigationView = (NavigationView)findViewById(R.id.tech_view);
                 navigationView.setVisibility(View.VISIBLE);
@@ -172,6 +180,7 @@ public class MainPage extends AppCompatActivity{
 
     }
 
+    // receive local daily notification
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void registerAlarm() {
         Calendar calender = Calendar.getInstance();
