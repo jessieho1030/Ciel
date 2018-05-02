@@ -24,6 +24,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,6 +34,7 @@ public class Discuss_tab extends AppCompatActivity implements TabLayout.OnTabSel
     TabLayout tab;
     ViewPager viewPager;
     ViewPagerAdaptor viewPagerAdaptor;
+    //TextView tv;
 
     private DatabaseReference mDatabase;
     //mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -46,6 +49,8 @@ public class Discuss_tab extends AppCompatActivity implements TabLayout.OnTabSel
         //String category = intent.getStringExtra(Discuss.CATEGORY);
         String category = intent.getStringExtra("category");
         intent.putExtra("category",category);
+        //tv = (TextView)findViewById(R.id.category);
+        //tv.setText(category);
 
         // Create tab
         tab = (TabLayout)findViewById(R.id.tab);
