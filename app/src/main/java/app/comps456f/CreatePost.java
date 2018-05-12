@@ -109,7 +109,10 @@ public class CreatePost extends AppCompatActivity {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                 name = dataSnapshot.getValue(String.class);
+                if(dataSnapshot.getValue(String.class) != null)
+                    name = dataSnapshot.getValue(String.class);
+                else
+                    name = "Teacher";
                 //Post post = new Post(author, category, subject, text, time);
                 Post post = new Post(author, subject, text, time, name);
                 mDatabase.child("comment").child(category).push().setValue(post);

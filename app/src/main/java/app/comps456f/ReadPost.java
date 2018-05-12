@@ -83,7 +83,10 @@ public class ReadPost extends AppCompatActivity {
                     mDatabase.child("user/"+ reader +"/name").addListenerForSingleValueEvent (new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            name = dataSnapshot.getValue(String.class);
+                            if(dataSnapshot.getValue(String.class) != null)
+                                name = dataSnapshot.getValue(String.class);
+                            else
+                                name = "Teacher";
                             Comment comment = new Comment(name, comment_text, comment_time);
                             mDatabase.child("comment").child(category).child(pid).child("recomment").push().setValue(comment);
                         }
