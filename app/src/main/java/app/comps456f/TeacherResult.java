@@ -22,7 +22,7 @@ import java.util.Map;
 
 
 public class TeacherResult extends Fragment {
-    private final String [] quiz_title = {"Quiz 0","Quiz 1", "Quiz 2", "Quiz 3"};
+    private final String [] quiz_title = {"Quiz 1","Quiz 2", "Quiz 3", "Quiz 4"};
     private final int [] quiz_img = {R.drawable.teach_result, R.drawable.teach_result1, R.drawable.teach_result3, R.drawable.teach_result4};
     private GridView gridView;
     private View view;

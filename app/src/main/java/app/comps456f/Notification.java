@@ -28,8 +28,8 @@ public class Notification extends AppCompatActivity {
     private FormEditText subject, notificationTitle, Ncontent;
     private ActionProcessButton btnNotification;
     private FirebaseAuth fireauth;
+    private final String from_user_id = fireauth.getInstance().getCurrentUser().getUid();
     private DatabaseReference noDatabase;
-
     private String user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class Notification extends AppCompatActivity {
         noDatabase = FirebaseDatabase.getInstance().getReference().child("notifications");
 
         if(fireauth.getInstance().getCurrentUser() != null) {
-            final String from_user_id = fireauth.getInstance().getCurrentUser().getUid();
+
 
             Log.v("Hello","Userid from : " + from_user_id);
 

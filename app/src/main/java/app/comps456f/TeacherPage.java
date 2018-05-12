@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.dd.processbutton.iml.ActionProcessButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,7 +45,7 @@ public class TeacherPage extends AppCompatActivity {
     private ArrayList<ArrayList<String>> studremind = new ArrayList<>();
     private String user_id;
     private DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference().child("user");
-
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class TeacherPage extends AppCompatActivity {
         renderResult(whichQuiz);
         teacher_result_recycler = (RecyclerView)findViewById(R.id.teacher_result_recycler);
         teacher_result_recycler.setLayoutManager(new LinearLayoutManager(this));
-
+        Log.v("now "," user : " + auth.getInstance().getCurrentUser().getUid());
 
 
         btnreminder = (ActionProcessButton)findViewById(R.id.btnreminder);
@@ -102,7 +103,7 @@ public class TeacherPage extends AppCompatActivity {
 
     public void renderResult(String quizno){
         switch (quizno){
-            case "Quiz 0":{
+            case "Quiz 1":{
 
                 mdatabase.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -152,7 +153,7 @@ public class TeacherPage extends AppCompatActivity {
                 break;
             }
 
-            case "Quiz 1":{
+            case "Quiz 2":{
                 mdatabase.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -200,7 +201,7 @@ public class TeacherPage extends AppCompatActivity {
                 break;
             }
 
-            case "Quiz 2":{
+            case "Quiz 3":{
                 mdatabase.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -246,7 +247,7 @@ public class TeacherPage extends AppCompatActivity {
                     public void onCancelled(DatabaseError databaseError) {}});
                 break;
             }
-            case "Quiz 3":{
+            case "Quiz 4":{
                 mdatabase.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
